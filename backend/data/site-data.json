@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "title": "Rafshan Ekhowan — Systems & Photography",
+    "description": "Rafshan Ekhowan — IPTSP, Network & Systems Engineer, and photographer across street, landscape, product and abstract work."
+  },
+  "hero": {
+    "statusBar": [
+      {
+        "label": "NODE",
+        "value": "DHAKA, BD"
+      },
+      {
+        "label": "ROLE",
+        "value": "SYS/NET EXEC — BRACNET"
+      },
+      {
+        "label": "STATUS",
+        "value": "ONLINE"
+      }
+    ],
+    "eyebrow": "Two disciplines, one operator",
+    "titleLine1": "Its Not Photography ",
+    "titleLine2": "Its Photo Art",
+    "subtitle": "I'm Rafshan — a Network & Systems Executive and photographer. Same instinct either way: read the structure before everyone else sees it.",
+    "ctaPrimary": {
+      "label": "View Experience",
+      "href": "#experience"
+    },
+    "ctaSecondary": {
+      "label": "See Photography",
+      "href": "#work"
+    },
+    "image": {
+      "src": "/uploads/1787488666504-112534722.jpg",
+      "alt": "Rafshan portrait"
+    }
+  },
+  "profile": {
+    "sectionNote": "Executive, Network & System Solution at BRACNet. B.Sc. in Information & Communication Engineering.",
+    "lead": "Network & System Administration professional managing enterprise network and server infrastructure, Linux systems, virtualization, and IPTSP operations.",
+    "paragraphs": [
+      "Experienced in Proxmox virtualization, network and server monitoring, infrastructure troubleshooting, security, backup, and resource optimization — with a strong record of maintaining high availability across production environments.",
+      "Proven ability to identify and resolve technical issues, improve operational reliability, and support secure, efficient IT infrastructure — the same eye for what's about to break (or what's about to happen) that shows up in the photography."
+    ],
+    "avatar": "/uploads/1787488666504-112534722.jpg",
+    "handle": "@rafshan_ekhowan",
+    "socials": [
+      { "name": "LinkedIn", "icon": "linkedin", "url": "#" },
+      { "name": "Facebook", "icon": "facebook", "url": "#" },
+      { "name": "Instagram", "icon": "instagram", "url": "#" }
+    ],
+    "education": [
+      {
+        "year": "2017 - 2021",
+        "degree": "B.Sc. in Information & Communication Engineering",
+        "institution": "University Name",
+        "desc": "Studied networking, systems, and communication engineering."
+      }
+    ],
+    "awards": [
+      {
+        "date": "14 May 2020",
+        "title": "Best Project Award",
+        "desc": "Awarded for exceptional network design."
+      }
+    ]
+  },
+  "experience": {
+    "sectionNote": "Roles spanning from IPTSP intern to Executive, plus a networking attachment at Atova Technology.",
+    "timeline": []
+  },
+  "projects": {
+    "sectionNote": "Infrastructure, automation and telephony systems built in production.",
+    "items": [
+      {
+        "id": "proj-1",
+        "name": "IP PBX & Call Center System",
+        "category": "TELEPHONY",
+        "description": "Deployed and administered an Asterisk-based IP PBX platform.",
+        "thumbnail": "",
+        "client": "BRACNet",
+        "services": "VoIP, Server Admin",
+        "year": "2022",
+        "longDescription": "Detailed implementation of Asterisk IP PBX...",
+        "gallery": [],
+        "tags": [
+          "Asterisk",
+          "VoIP"
+        ]
+      },
+      {
+        "id": "proj-2",
+        "name": "AI Voice Agent",
+        "category": "AUTOMATION",
+        "description": "Built a voice-based AI customer support agent using Ollama, Python, and Asterisk.",
+        "thumbnail": "",
+        "client": "Internal",
+        "services": "AI, Scripting",
+        "year": "2023",
+        "longDescription": "Integrated Ollama with Asterisk via Python AGI scripts.",
+        "gallery": [],
+        "tags": [
+          "Ollama",
+          "Python"
+        ]
+      },
+      {
+        "id": "proj-3",
+        "name": "IPPLAN Vault",
+        "category": "NETWORKING",
+        "description": "Enhanced a PHP-based network management system with a dynamic diagramming and AES-256 password vault.",
+        "thumbnail": "",
+        "client": "BRACNet",
+        "services": "PHP, Database",
+        "year": "2021",
+        "longDescription": "Added secure password storage using AES-256 and dynamic SVG diagramming to IPPLAN.",
+        "gallery": [],
+        "tags": [
+          "PHP",
+          "Networking"
+        ]
+      },
+      {
+        "id": "proj-4",
+        "name": "NTP Server",
+        "category": "INFRASTRUCTURE",
+        "description": "Deployed a centralized NTP server to maintain accurate, synchronized time across the infrastructure.",
+        "thumbnail": "",
+        "client": "Internal",
+        "services": "Linux, NTP",
+        "year": "2020",
+        "longDescription": "Configured local Stratum 2 NTP servers for strict sync.",
+        "gallery": [],
+        "tags": [
+          "NTP",
+          "Linux"
+        ]
+      },
+      {
+        "id": "proj-5",
+        "name": "TrueNAS FTP",
+        "category": "STORAGE",
+        "description": "Set up a TrueNAS-based FTP server for centralized storage, backup, and secure file transfer.",
+        "thumbnail": "",
+        "client": "Internal",
+        "services": "TrueNAS, FTP",
+        "year": "2021",
+        "longDescription": "ZFS-based secure internal FTP storage array.",
+        "gallery": [],
+        "tags": [
+          "TrueNAS",
+          "FTP"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "columns": [
+      {
+        "heading": "Core Competencies",
+        "tags": [
+          "Network Admin",
+          "Linux Systems",
+          "Virtualization",
+          "VoIP & IPTSP",
+          "Server Troubleshooting",
+          "Python Scripting"
+        ]
+      },
+      {
+        "heading": "Tools & Software",
+        "tags": [
+          "Proxmox VE",
+          "Zabbix",
+          "MikroTik",
+          "TrueNAS",
+          "MySQL",
+          "Asterisk"
+        ]
+      }
+    ]
+  },
+  "photography": {
+    "sectionNote": "Filter by genre. The same discipline applies whether it's a street corner or a studio.",
+    "tiles": [
+      {
+        "id": "ph-1",
+        "src": "/uploads/1787480265326-89853182.jpg",
+        "alt": "Street photograph",
+        "category": "Potrait",
+        "aperture": "f/2.8 · 1/500",
+        "location": "Old Dhaka"
+      },
+      {
+        "id": "ph-2",
+        "src": "/uploads/1787481612842-736188960.jpg",
+        "alt": "Landscape photograph",
+        "category": "landscape",
+        "aperture": "f/11 · 1/125",
+        "location": "Sylhet"
+      },
+      {
+        "id": "ph-3",
+        "src": "/uploads/1787481618996-493664107.jpg",
+        "alt": "Product photograph",
+        "category": "product",
+        "aperture": "f/8 · 1/160",
+        "location": "Studio"
+      },
+      {
+        "id": "ph-4",
+        "src": "/uploads/1787481625587-369984580.jpg",
+        "alt": "Abstract photograph",
+        "category": "abstract",
+        "aperture": "f/4 · 1/60",
+        "location": "Buriganga"
+      },
+      {
+        "id": "ph-5",
+        "src": "/uploads/1787481631372-817778819.jpg",
+        "alt": "Street photograph",
+        "category": "street",
+        "aperture": "f/2 · 1/1000",
+        "location": "Gulistan"
+      },
+      {
+        "id": "ph-6",
+        "src": "/uploads/1787481637644-807634384.jpg",
+        "alt": "Landscape photograph",
+        "category": "landscape",
+        "aperture": "f/13 · 1/60",
+        "location": "Rangamati"
+      },
+      {
+        "id": "ph-1787481641438",
+        "src": "/uploads/1787481646790-733694868.jpg",
+        "alt": "",
+        "category": "street",
+        "aperture": "",
+        "location": ""
+      }
+    ]
+  },
+  "genres": [
+    {
+      "id": "g-1",
+      "num": "01",
+      "name": "Street",
+      "desc": "Unposed moments, found light."
+    },
+    {
+      "id": "g-2",
+      "num": "02",
+      "name": "Landscape",
+      "desc": "Waiting for the land to speak."
+    },
+    {
+      "id": "g-3",
+      "num": "03",
+      "name": "Product",
+      "desc": "Controlled light for brands."
+    },
+    {
+      "id": "g-4",
+      "num": "04",
+      "name": "Abstract",
+      "desc": "Suggesting a narrative."
+    }
+  ],
+  "media": {
+    "sectionNote": "Featured videos and posts.",
+    "items": [
+      {
+        "id": "med-1787483701785",
+        "type": "youtube",
+        "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/msjw2E2Nst8?si=rgQTJeHfJj22ERIs&amp;start=1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "title": ""
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "headingBefore": "Let's build or shoot",
+    "headingStrong": "something worth it.",
+    "email": "rafshan50-008@diu.edu.bd",
+    "phone": "+8801706736796",
+    "phoneDisplay": "+880 1706-736796",
+    "linkedin": "https://linkedin.com/in/rafshan-ekhowan",
+    "linkedinDisplay": "linkedin.com/in/rafshan-ekhowan",
+    "instagram": "#",
+    "instagramDisplay": "Instagram"
+  },
+  "footer": {
+    "copyright": "© 2026 Rafshan Ekhowan. All rights reserved.",
+    "location": "Dhaka, Bangladesh"
+  }
+}

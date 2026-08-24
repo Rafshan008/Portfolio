@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafshan Ekhowan — Systems & Photography</title>
+<meta name="description" content="Loading...">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
+<link rel="stylesheet" href="css/main.css?v=12">
+</head>
+<body>
+<div class="page-curtain" id="pageCurtain"><span class="page-curtain-mark">RAFSHAN EKHOWAN</span></div>
+<noscript><style>.page-curtain{display:none !important;}</style></noscript>
+<script>
+  // Safety net
+  setTimeout(function(){
+    var c = document.getElementById('pageCurtain');
+    if (c) c.style.display = 'none';
+  }, 3500);
+</script>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo"><span class="px"></span>RAFSHAN EKHOWAN</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#work">Photography</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="about.html" class="nav-about-btn" style="color: var(--c-accent); font-weight: 600;">About</a></li>
+    </ul>
+    <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
+  </nav>
+</header>
+
+<section class="bg-eider" id="top" style="padding: 120px 24px 40px; border-bottom: 1px solid var(--edge-color);">
+  <div class="wrap">
+    <h1 style="font-family: var(--display); font-size: 32px; font-weight: 700; letter-spacing: -0.01em; color: var(--c-forest); margin: 0;">About Me</h1>
+  </div>
+</section>
+
+<section id="about" class="bg-essex has-edge">
+  <div class="wrap gridx-about-layout">
+    <aside class="gridx-sidebar fade-up delay-1" id="gridx-sidebar">
+      <!-- Injected profile card -->
+    </aside>
+    <main class="gridx-content fade-up delay-2" id="gridx-content">
+      <!-- Injected about/exp/edu/skills/awards -->
+    </main>
+  </div>
+</section>
+
+
+
+<section class="contact bg-tarry has-edge" id="contact">
+  <div class="wrap fade-up">
+    <div>
+      <span class="eyebrow" id="contact-eyebrow"></span>
+      <h2 id="contact-heading"></h2>
+      <a class="contact-email" href="#" id="contact-email"></a>
+    </div>
+    <div class="contact-links" id="contact-links">
+      <!-- Injected -->
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="site-lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <div class="lightbox-content">
+    <div id="lightbox-media"></div>
+    <div id="lightbox-desc">
+      <h3 class="lightbox-title" id="lightbox-title"></h3>
+      <div class="lightbox-meta" id="lightbox-meta"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-forest">
+  <div class="wrap">
+    <span id="footer-copy"></span>
+    <span id="footer-loc"></span>
+  </div>
+</footer>
+
+<script src="js/render.js?v=9"></script>
+<script src="js/main.js?v=9"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafshan Ekhowan — Systems & Photography</title>
+<meta name="description" content="Loading...">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
+<link rel="stylesheet" href="css/main.css?v=14">
+</head>
+<body>
+<div class="page-curtain" id="pageCurtain"><span class="page-curtain-mark">RAFSHAN EKHOWAN</span></div>
+<noscript><style>.page-curtain{display:none !important;}</style></noscript>
+<script>
+  // Safety net
+  setTimeout(function(){
+    var c = document.getElementById('pageCurtain');
+    if (c) c.style.display = 'none';
+  }, 3500);
+</script>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo"><span class="px"></span>RAFSHAN EKHOWAN</a>
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#work">Photography</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="about.html" class="nav-about-btn" style="color: var(--c-accent); font-weight: 600;">About</a></li>
+    </ul>
+    <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
+  </nav>
+</header>
+
+<section class="hero bg-lace" id="top">
+  <!-- Subtler 3D Doodles -->
+  <div class="doodles-container">
+    <div class="doodle d-node">
+      <div class="d-node-cube">
+        <div class="d-node-face df-front"></div>
+        <div class="d-node-face df-back"></div>
+        <div class="d-node-face df-right"></div>
+        <div class="d-node-face df-left"></div>
+        <div class="d-node-face df-top"></div>
+        <div class="d-node-face df-bottom"></div>
+      </div>
+    </div>
+    <div class="doodle d-lens">
+      <div class="d-lens-ring dr-1"></div>
+      <div class="d-lens-ring dr-2"></div>
+      <div class="d-lens-ring dr-3"></div>
+    </div>
+    <div class="doodle d-rack">
+      <div class="d-rack-inner">
+        <div class="d-rack-server ds-1"></div>
+        <div class="d-rack-server ds-2"></div>
+        <div class="d-rack-server ds-3"></div>
+      </div>
+    </div>
+    <div class="doodle d-film">
+      <div class="d-film-inner">
+        <div class="d-film-strip"></div>
+      </div>
+    </div>
+    <div class="doodle d-camera">
+      <div class="d-camera-inner">
+        <div class="d-camera-body"></div>
+        <div class="d-camera-lens"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-content fade-up">
+      <div class="status-bar" id="hero-status">
+        <!-- Injected -->
+      </div>
+      <div class="hero-eyebrow" id="hero-eyebrow"></div>
+      <h1 class="hero-title" id="hero-title"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <div class="hero-cta">
+        <a href="#" class="btn solid" id="cta-primary"></a>
+        <a href="#" class="btn ghost" id="cta-secondary"></a>
+      </div>
+    </div>
+    
+    <div class="hero-image-wrap fade-up delay-2">
+      <span class="bracket tl"></span>
+      <span class="bracket tr"></span>
+      <span class="bracket bl"></span>
+      <span class="bracket br"></span>
+      <img class="reveal-clip" src="" alt="" id="hero-image">
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="bg-projects has-edge">
+  <div class="wrap">
+    <div class="gridx-section-head fade-up">
+      <span class="gridx-star">✺</span>
+      <h2 id="proj-heading">ALL PROJECTS</h2>
+      <span class="gridx-star">✺</span>
+    </div>
+    <div class="gridx-proj-grid fade-up delay-1" id="proj-grid">
+      <!-- Injected bento cards -->
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="bg-forest has-edge">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div><span class="eyebrow">Experience</span><h2>Production infrastructure.</h2></div>
+      <p class="section-note" id="exp-note"></p>
+    </div>
+    <div class="timeline fade-up delay-1" id="exp-timeline">
+      <!-- Injected -->
+    </div>
+  </div>
+</section>
+
+<section id="work" class="bg-tarry has-edge">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div>
+        <span class="eyebrow">Selected Work</span>
+        <h2>A frame at a time.</h2>
+      </div>
+      <p class="section-note" id="photo-note"></p>
+    </div>
+
+    <div class="filters fade-up delay-1">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="street">Street</button>
+      <button class="filter-btn" data-filter="landscape">Landscape</button>
+      <button class="filter-btn" data-filter="product">Product</button>
+      <button class="filter-btn" data-filter="abstract">Abstract</button>
+    </div>
+
+    <div class="coverflow-container fade-up delay-2">
+      <div class="coverflow-header">
+        <h3 id="coverflow-title">Ocean Sunset</h3>
+        <p id="coverflow-sub">Golden hour over endless ocean waves</p>
+      </div>
+      
+      <div class="coverflow-viewport">
+        <div class="coverflow-track" id="coverflow-track">
+          <!-- Injected via render.js -->
+        </div>
+      </div>
+      
+      <button class="coverflow-nav prev" id="coverflow-prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="coverflow-nav next" id="coverflow-next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      
+      <div class="coverflow-dots" id="coverflow-dots">
+        <!-- Injected dots -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="media" class="bg-essex has-edge" style="display: none;">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div>
+        <span class="eyebrow">Media & Features</span>
+        <h2>Videos & Posts.</h2>
+      </div>
+      <p class="section-note" id="media-note"></p>
+    </div>
+    <div class="media-grid" id="media-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: start;">
+      <!-- Injected -->
+    </div>
+  </div>
+</section>
+
+
+
+<div id="custom-sections-container"></div>
+
+<section class="contact bg-essex has-edge" id="contact">
+  <div class="wrap fade-up">
+    <div>
+      <span class="eyebrow" id="contact-eyebrow"></span>
+      <h2 id="contact-heading"></h2>
+      <a class="contact-email" href="#" id="contact-email"></a>
+    </div>
+    <div class="contact-links" id="contact-links">
+      <!-- Injected -->
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="site-lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <div class="lightbox-content">
+    <div id="lightbox-media"></div>
+    <div id="lightbox-desc">
+      <h3 class="lightbox-title" id="lightbox-title"></h3>
+      <div class="lightbox-meta" id="lightbox-meta"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-forest">
+  <div class="wrap">
+    <span id="footer-copy"></span>
+    <span id="footer-loc"></span>
+  </div>
+</footer>
+
+<script src="js/render.js?v=13"></script>
+<script src="js/main.js?v=11"></script>
+</body>
+</html>
