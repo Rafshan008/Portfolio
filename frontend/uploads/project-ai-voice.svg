@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c17"/>
+      <stop offset="100%" stop-color="#1f2d24"/>
+    </linearGradient>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C17A46"/>
+      <stop offset="50%" stop-color="#E8B98C"/>
+      <stop offset="100%" stop-color="#68d391"/>
+    </linearGradient>
+    <pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad2)"/>
+  <rect width="800" height="600" fill="url(#grid2)"/>
+
+  <!-- Registration -->
+  <path d="M 40 60 L 40 40 L 60 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 60 L 760 40 L 740 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 40 540 L 40 560 L 60 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 540 L 760 560 L 740 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+
+  <text x="50" y="70" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#C17A46" letter-spacing="2">SYS::AI // INTELLIGENCE 02</text>
+  <text x="750" y="70" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="1">OLLAMA + FASTAPI + AGI</text>
+
+  <!-- Neural Mesh Concentric Circles -->
+  <g transform="translate(400, 290)">
+    <circle cx="0" cy="0" r="190" fill="none" stroke="rgba(232, 185, 140, 0.12)" stroke-width="1" stroke-dasharray="8 6"/>
+    <circle cx="0" cy="0" r="130" fill="none" stroke="rgba(193, 122, 70, 0.25)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="75" fill="rgba(25, 33, 28, 0.9)" stroke="url(#neonGlow)" stroke-width="2"/>
+
+    <!-- Synapse connections -->
+    <path d="M -130 0 L -75 0 M 130 0 L 75 0 M 0 -130 L 0 -75 M 0 130 L 0 75" stroke="#C17A46" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <path d="M -92 -92 L -53 -53 M 92 -92 L 53 -53 M -92 92 L -53 53 M 92 92 L 53 53" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Nodes -->
+    <circle cx="-130" cy="0" r="6" fill="#C17A46"/>
+    <circle cx="130" cy="0" r="6" fill="#E8B98C"/>
+    <circle cx="0" cy="-130" r="6" fill="#68d391"/>
+    <circle cx="0" cy="130" r="6" fill="#C17A46"/>
+    
+    <circle cx="-92" cy="-92" r="4" fill="rgba(255,255,255,0.5)"/>
+    <circle cx="92" cy="-92" r="4" fill="rgba(255,255,255,0.5)"/>
+    <circle cx="-92" cy="92" r="4" fill="rgba(255,255,255,0.5)"/>
+    <circle cx="92" cy="92" r="4" fill="rgba(255,255,255,0.5)"/>
+
+    <text x="0" y="-8" text-anchor="middle" font-family="'Archivo', sans-serif" font-weight="700" font-size="16" fill="#FFFFFF">LLM CORE</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#E8B98C">VOICE AGENT</text>
+    <text x="0" y="30" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#68d391">STREAMING INFERENCE</text>
+  </g>
+
+  <!-- Left Card: Asterisk AGI Audio In -->
+  <rect x="80" y="250" width="150" height="80" rx="8" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="155" y="278" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">AUDIO PIPELINE</text>
+  <text x="155" y="296" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">WHISPER STT (8kHz)</text>
+  <text x="155" y="314" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.5)">LATENCY &lt; 280ms</text>
+
+  <!-- Right Card: Piper TTS Audio Out -->
+  <rect x="570" y="250" width="150" height="80" rx="8" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="645" y="278" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">SPEECH SYNTHESIS</text>
+  <text x="645" y="296" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">PIPER / COQUI TTS</text>
+  <text x="645" y="314" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.5)">NATURAL INFLECTION</text>
+
+  <!-- Soundwave visualizer at bottom -->
+  <path d="M 120 480 Q 200 450, 280 480 T 440 480 T 600 480 T 680 480" fill="none" stroke="rgba(193, 122, 70, 0.3)" stroke-width="2"/>
+  <path d="M 120 480 Q 200 420, 280 480 T 440 480 T 600 480 T 680 480" fill="none" stroke="url(#neonGlow)" stroke-width="2.5"/>
+  <text x="400" y="530" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#E8B98C" letter-spacing="2">REAL-TIME BIDIRECTIONAL SPEECH PIPELINE</text>
+</svg>

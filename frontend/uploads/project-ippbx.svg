@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c17"/>
+      <stop offset="100%" stop-color="#223028"/>
+    </linearGradient>
+    <linearGradient id="amberGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C17A46"/>
+      <stop offset="100%" stop-color="#E8B98C"/>
+    </linearGradient>
+    <pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad1)"/>
+  <rect width="800" height="600" fill="url(#grid1)"/>
+
+  <!-- HUD Reticles -->
+  <circle cx="400" cy="300" r="220" fill="none" stroke="rgba(193, 122, 70, 0.15)" stroke-width="1" stroke-dasharray="4 8"/>
+  <circle cx="400" cy="300" r="160" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <circle cx="400" cy="300" r="2" fill="#E8B98C"/>
+
+  <!-- Corner Registration -->
+  <path d="M 40 60 L 40 40 L 60 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 60 L 760 40 L 740 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 40 540 L 40 560 L 60 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 540 L 760 560 L 740 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+
+  <!-- Metadata Header -->
+  <text x="50" y="70" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#C17A46" letter-spacing="2">SYS::VOIP // ARCHITECTURE 01</text>
+  <text x="750" y="70" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="1">SIP TRUNK // ACTIVE</text>
+
+  <!-- Central PBX Server Node -->
+  <g transform="translate(400, 300)">
+    <!-- Hexagonal or Server Rack Box -->
+    <rect x="-90" y="-55" width="180" height="110" rx="8" fill="rgba(25, 33, 28, 0.85)" stroke="url(#amberGrad1)" stroke-width="2"/>
+    <line x1="-80" y1="-20" x2="80" y2="-20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <line x1="-80" y1="15" x2="80" y2="15" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    
+    <!-- LED Indicators -->
+    <circle cx="-70" cy="-36" r="3" fill="#68d391"/>
+    <circle cx="-58" cy="-36" r="3" fill="#68d391"/>
+    <circle cx="-46" cy="-36" r="3" fill="#E8B98C"/>
+    
+    <text x="0" y="-32" text-anchor="middle" font-family="'Archivo', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF" letter-spacing="1">ASTERISK PBX</text>
+    <text x="0" y="2" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#E8B98C">ISSABEL CORE v4.0</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(255,255,255,0.5)">SIP 5060 · RTP STREAM</text>
+  </g>
+
+  <!-- Trunk Nodes & Lines -->
+  <!-- Node 1: Left PSTN Gateway -->
+  <path d="M 200 200 L 310 260" stroke="rgba(193, 122, 70, 0.4)" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="130" y="170" width="120" height="60" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="190" y="198" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">IPTSP GATEWAY</text>
+  <text x="190" y="216" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">E1 / PRI TRUNK</text>
+
+  <!-- Node 2: Right Call Center Queues -->
+  <path d="M 600 200 L 490 260" stroke="rgba(193, 122, 70, 0.4)" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="550" y="170" width="120" height="60" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="610" y="198" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">AGENT QUEUES</text>
+  <text x="610" y="216" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">ACD &amp; CDR STATS</text>
+
+  <!-- Node 3: Bottom Client Extensions -->
+  <path d="M 400 355 L 400 430" stroke="rgba(193, 122, 70, 0.5)" stroke-width="2"/>
+  <rect x="330" y="430" width="140" height="60" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="400" y="458" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">SIP EXTENSIONS</text>
+  <text x="400" y="476" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(255,255,255,0.5)">WEBRTC &amp; HARDPHONES</text>
+
+  <!-- Waveform Indicator -->
+  <g transform="translate(340, 525)" stroke="#C17A46" stroke-width="2" stroke-linecap="round">
+    <line x1="0" y1="0" x2="0" y2="14"/>
+    <line x1="10" y1="-6" x2="10" y2="20"/>
+    <line x1="20" y1="-14" x2="20" y2="28"/>
+    <line x1="30" y1="-8" x2="30" y2="22"/>
+    <line x1="40" y1="-18" x2="40" y2="32"/>
+    <line x1="50" y1="-4" x2="50" y2="18"/>
+    <line x1="60" y1="-12" x2="60" y2="26"/>
+    <line x1="70" y1="0" x2="70" y2="14"/>
+    <line x1="80" y1="-6" x2="80" y2="20"/>
+    <line x1="90" y1="-15" x2="90" y2="29"/>
+    <line x1="100" y1="-3" x2="100" y2="17"/>
+    <line x1="110" y1="0" x2="110" y2="14"/>
+  </g>
+</svg>

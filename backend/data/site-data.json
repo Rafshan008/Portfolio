@@ -31,7 +31,7 @@
       "href": "#work"
     },
     "image": {
-      "src": "/uploads/1787488666504-112534722.jpg",
+      "src": "/uploads/1788762712922-928290355.jpg",
       "alt": "Rafshan portrait"
     }
   },
@@ -45,9 +45,21 @@
     "avatar": "/uploads/1787488666504-112534722.jpg",
     "handle": "@rafshan_ekhowan",
     "socials": [
-      { "name": "LinkedIn", "icon": "linkedin", "url": "#" },
-      { "name": "Facebook", "icon": "facebook", "url": "#" },
-      { "name": "Instagram", "icon": "instagram", "url": "#" }
+      {
+        "name": "LinkedIn",
+        "icon": "linkedin",
+        "url": "#"
+      },
+      {
+        "name": "Facebook",
+        "icon": "facebook",
+        "url": "#"
+      },
+      {
+        "name": "Instagram",
+        "icon": "instagram",
+        "url": "#"
+      }
     ],
     "education": [
       {
@@ -66,90 +78,104 @@
     ]
   },
   "experience": {
-    "sectionNote": "Roles spanning from IPTSP intern to Executive, plus a networking attachment at Atova Technology.",
+    "sectionNote": "Roles spanning from IPTSP intern to Executive, managing enterprise network infrastructure at BRACNet.",
     "timeline": []
   },
   "projects": {
-    "sectionNote": "Infrastructure, automation and telephony systems built in production.",
+    "sectionNote": "Infrastructure, automation and telephony systems engineered and deployed in production.",
     "items": [
       {
         "id": "proj-1",
         "name": "IP PBX & Call Center System",
         "category": "TELEPHONY",
-        "description": "Deployed and administered an Asterisk-based IP PBX platform.",
-        "thumbnail": "",
+        "description": "Deployed and administered an Asterisk-based IP PBX platform with automated call routing, ACD queues, and CDR analytics.",
+        "thumbnail": "/uploads/project-ippbx.svg",
         "client": "BRACNet",
-        "services": "VoIP, Server Admin",
-        "year": "2022",
-        "longDescription": "Detailed implementation of Asterisk IP PBX...",
+        "services": "VoIP, Asterisk, Linux",
+        "year": "2024",
+        "longDescription": "Comprehensive production deployment of an Asterisk-based IP PBX platform (Issabel). Configured high-capacity SIP trunks, interactive voice response (IVR) flows, automated call distribution (ACD) queues for support teams, and real-time CDR analytics for operational monitoring.",
         "gallery": [],
         "tags": [
           "Asterisk",
-          "VoIP"
+          "VoIP",
+          "SIP",
+          "Issabel"
         ]
       },
       {
         "id": "proj-2",
         "name": "AI Voice Agent",
         "category": "AUTOMATION",
-        "description": "Built a voice-based AI customer support agent using Ollama, Python, and Asterisk.",
-        "thumbnail": "",
-        "client": "Internal",
-        "services": "AI, Scripting",
-        "year": "2023",
-        "longDescription": "Integrated Ollama with Asterisk via Python AGI scripts.",
+        "description": "Built a voice-based AI customer support agent using Ollama, Python, and Asterisk for automated real-time dialogue.",
+        "thumbnail": "/uploads/project-ai-voice.svg",
+        "client": "Internal / BRACNet",
+        "services": "AI, Python, AGI",
+        "year": "2024",
+        "longDescription": "Integrated local open-source LLMs via Ollama with Asterisk PBX using custom Python AGI (Asterisk Gateway Interface) scripts. Features low-latency speech-to-text (Whisper), prompt-orchestrated dialogue management, and realistic text-to-speech synthesis with sub-300ms turnaround.",
         "gallery": [],
         "tags": [
           "Ollama",
-          "Python"
+          "Python",
+          "FastAPI",
+          "Asterisk AGI"
         ]
       },
       {
         "id": "proj-3",
         "name": "IPPLAN Vault",
         "category": "NETWORKING",
-        "description": "Enhanced a PHP-based network management system with a dynamic diagramming and AES-256 password vault.",
-        "thumbnail": "",
+        "description": "Enhanced a network IP address management system with dynamic SVG topology diagrams and an AES-256 password vault.",
+        "thumbnail": "/uploads/project-ipplan.svg",
         "client": "BRACNet",
-        "services": "PHP, Database",
-        "year": "2021",
-        "longDescription": "Added secure password storage using AES-256 and dynamic SVG diagramming to IPPLAN.",
+        "services": "PHP, MySQL, Security",
+        "year": "2023",
+        "longDescription": "Extended the IPPLAN infrastructure management platform with an integrated credential keystore encrypted via AES-256-CBC. Developed automated SVG network topology visualizers and role-based access control for sysadmin teams across multiple data centers.",
         "gallery": [],
         "tags": [
           "PHP",
+          "AES-256",
+          "IPPLAN",
           "Networking"
         ]
       },
       {
         "id": "proj-4",
-        "name": "NTP Server",
+        "name": "Centralized NTP Server",
         "category": "INFRASTRUCTURE",
-        "description": "Deployed a centralized NTP server to maintain accurate, synchronized time across the infrastructure.",
-        "thumbnail": "",
-        "client": "Internal",
-        "services": "Linux, NTP",
-        "year": "2020",
-        "longDescription": "Configured local Stratum 2 NTP servers for strict sync.",
-        "gallery": [],
+        "description": "Deployed a high-precision Stratum NTP server ensuring strict microsecond clock synchronization across the infrastructure.",
+        "thumbnail": "/uploads/project-ntp.svg",
+        "client": "Enterprise Network",
+        "services": "Linux, Chrony, NTP",
+        "year": "2023",
+        "longDescription": "Configured local Stratum 2 NTP time servers utilizing Chrony daemon on hardened Linux hosts. Maintained synchronized timestamping across Proxmox VM clusters, VoIP switches, and security loggers, eliminating drift and timestamp discrepancies.",
+        "gallery": [
+          "/uploads/project-ntp.svg"
+        ],
         "tags": [
           "NTP",
-          "Linux"
+          "Chrony",
+          "Linux",
+          "High Availability"
         ]
       },
       {
         "id": "proj-5",
-        "name": "TrueNAS FTP",
+        "name": "TrueNAS Secure Storage Array",
         "category": "STORAGE",
-        "description": "Set up a TrueNAS-based FTP server for centralized storage, backup, and secure file transfer.",
-        "thumbnail": "",
-        "client": "Internal",
-        "services": "TrueNAS, FTP",
-        "year": "2021",
-        "longDescription": "ZFS-based secure internal FTP storage array.",
-        "gallery": [],
+        "description": "Configured a TrueNAS ZFS storage cluster with TLS-encrypted FTP and automated hourly snapshot replication.",
+        "thumbnail": "/uploads/project-truenas.svg",
+        "client": "Internal Operations",
+        "services": "TrueNAS, ZFS, SFTP",
+        "year": "2023",
+        "longDescription": "Engineered enterprise-grade storage using TrueNAS CORE with RAID-Z2 pool redundancy. Implemented automated ZFS snapshot schedules, off-site replication pipelines, and secure FTP over TLS (FTPS) with isolated user chroot environments.",
+        "gallery": [
+          "/uploads/project-truenas.svg"
+        ],
         "tags": [
           "TrueNAS",
-          "FTP"
+          "ZFS",
+          "RAID-Z2",
+          "FTPS"
         ]
       }
     ]
@@ -274,7 +300,8 @@
         "id": "med-1787483701785",
         "type": "youtube",
         "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/msjw2E2Nst8?si=rgQTJeHfJj22ERIs&amp;start=1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
-        "title": ""
+        "title": "",
+        "thumbnail": ""
       }
     ]
   },

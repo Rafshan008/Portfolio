@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c17"/>
+      <stop offset="100%" stop-color="#1e2c23"/>
+    </linearGradient>
+    <pattern id="grid5" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad5)"/>
+  <rect width="800" height="600" fill="url(#grid5)"/>
+
+  <!-- Registration -->
+  <path d="M 40 60 L 40 40 L 60 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 60 L 760 40 L 740 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 40 540 L 40 560 L 60 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 540 L 760 560 L 740 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+
+  <text x="50" y="70" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#C17A46" letter-spacing="2">SYS::STORAGE // ZFS &amp; FTP 05</text>
+  <text x="750" y="70" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="1">RAID-Z2 POOL // HEALTHY</text>
+
+  <!-- Storage Drive Rack Unit -->
+  <g transform="translate(400, 260)">
+    <!-- Chassis -->
+    <rect x="-170" y="-120" width="340" height="240" rx="10" fill="rgba(25, 33, 28, 0.9)" stroke="#C17A46" stroke-width="2"/>
+    
+    <!-- Top Chassis Header -->
+    <rect x="-170" y="-120" width="340" height="35" rx="10" fill="#141c17"/>
+    <text x="-140" y="-97" font-family="'Archivo', sans-serif" font-weight="700" font-size="12" fill="#FFFFFF">TRUENAS CORE</text>
+    <circle cx="120" cy="-102" r="4" fill="#68d391"/>
+    <circle cx="135" cy="-102" r="4" fill="#68d391"/>
+    <circle cx="150" cy="-102" r="4" fill="#E8B98C"/>
+
+    <!-- Drive Bays Row 1 -->
+    <rect x="-150" y="-70" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="-140" y1="-45" x2="-70" y2="-45" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="-135" cy="-60" r="2.5" fill="#68d391"/>
+    <text x="-120" y="-57" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 01</text>
+
+    <rect x="-45" y="-70" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="-35" y1="-45" x2="35" y2="-45" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="-30" cy="-60" r="2.5" fill="#68d391"/>
+    <text x="-15" y="-57" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 02</text>
+
+    <rect x="60" y="-70" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="70" y1="-45" x2="140" y2="-45" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="75" cy="-60" r="2.5" fill="#68d391"/>
+    <text x="90" y="-57" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 03</text>
+
+    <!-- Drive Bays Row 2 -->
+    <rect x="-150" y="-10" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="-140" y1="15" x2="-70" y2="15" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="-135" cy="0" r="2.5" fill="#68d391"/>
+    <text x="-120" y="3" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 04</text>
+
+    <rect x="-45" y="-10" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="-35" y1="15" x2="35" y2="15" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="-30" cy="0" r="2.5" fill="#68d391"/>
+    <text x="-15" y="3" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 05</text>
+
+    <rect x="60" y="-10" width="90" height="50" rx="4" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="70" y1="15" x2="140" y2="15" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="75" cy="0" r="2.5" fill="#68d391"/>
+    <text x="90" y="3" font-family="'IBM Plex Mono', monospace" font-size="8" fill="rgba(255,255,255,0.6)">BAY 06</text>
+
+    <!-- Pool Status Details -->
+    <text x="0" y="70" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">ZPOOL: data-pool-01</text>
+    <text x="0" y="90" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">CAPACITY: 24.8 TB / 48.0 TB · COMPRESSION: LZ4</text>
+  </g>
+
+  <!-- Left: Secure FTP / TLS Protocol -->
+  <rect x="80" y="440" width="280" height="70" rx="6" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="220" y="468" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">FTP OVER TLS / SFTP</text>
+  <text x="220" y="488" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">PORT 21/22 · ISOLATED CHROOT</text>
+
+  <!-- Right: Automated Snapshots -->
+  <rect x="440" y="440" width="280" height="70" rx="6" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="580" y="468" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">ZFS SNAPSHOT SCHEDULE</text>
+  <text x="580" y="488" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">HOURLY DELTA · OFF-SITE REPLICATION</text>
+</svg>

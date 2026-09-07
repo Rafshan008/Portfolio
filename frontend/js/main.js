@@ -10,6 +10,7 @@ const lenis = new Lenis({
   easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smooth: true,
 });
+window.lenis = lenis;
 
 function raf(time) {
   lenis.raf(time);
@@ -45,7 +46,7 @@ function initAnimations() {
 
   // ── Cursor hover enlarge ────────────────────────────────
   if (cursorOutline) {
-    document.querySelectorAll('a, button, .filter-btn, .tile').forEach(el => {
+    document.querySelectorAll('a, button, .filter-btn, .proj-filter-btn, .tile, .coverflow-card, .gridx-proj-card, .copy-btn, .gridx-skill-pill, .social-icon').forEach(el => {
       el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
     });

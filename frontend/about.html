@@ -15,7 +15,7 @@
 <!-- Lenis Smooth Scroll -->
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
 
-<link rel="stylesheet" href="css/main.css?v=12">
+<link rel="stylesheet" href="css/main.css?v=31">
 </head>
 <body>
 <div class="page-curtain" id="pageCurtain"><span class="page-curtain-mark">RAFSHAN EKHOWAN</span></div>
@@ -31,20 +31,50 @@
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
-<header>
-  <nav>
-    <a href="#top" class="logo"><span class="px"></span>RAFSHAN EKHOWAN</a>
-    <ul class="nav-links">
+<header id="siteHeader">
+  <nav class="nav-container">
+    <a href="index.html" class="logo"><span class="px"></span>RAFSHAN EKHOWAN</a>
+    <ul class="nav-links" id="desktopNavLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#experience">Experience</a></li>
       <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
       <li><a href="index.html#work">Photography</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="about.html" class="nav-about-btn" style="color: var(--c-accent); font-weight: 600;">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="about.html" class="nav-about-btn active">About</a></li>
     </ul>
-    <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
+    <div class="nav-right">
+      <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
+      <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
 </header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-header">
+    <span class="logo"><span class="px"></span>RAFSHAN EKHOWAN</span>
+    <button class="mobile-drawer-close" id="drawerClose">&times;</button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" class="drawer-link">01 // Home</a></li>
+    <li><a href="index.html#projects" class="drawer-link">02 // Projects</a></li>
+    <li><a href="index.html#experience" class="drawer-link">03 // Experience</a></li>
+    <li><a href="index.html#work" class="drawer-link">04 // Photography</a></li>
+    <li><a href="#contact" class="drawer-link">05 // Contact</a></li>
+    <li><a href="about.html" class="drawer-link drawer-about active">06 // About Rafshan ↗</a></li>
+  </ul>
+  <div class="mobile-drawer-footer">
+    <div class="drawer-status"><span class="dot"></span><span id="drawerClock">DHAKA, BD</span></div>
+    <div class="drawer-socials">
+      <a href="https://linkedin.com/in/rafshan-ekhowan" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:rafshan50-008@diu.edu.bd">Email</a>
+    </div>
+  </div>
+</div>
 
 <section class="bg-eider" id="top" style="padding: 120px 24px 40px; border-bottom: 1px solid var(--edge-color);">
   <div class="wrap">
@@ -52,7 +82,7 @@
   </div>
 </section>
 
-<section id="about" class="bg-essex has-edge">
+<section id="about" class="bg-lace has-edge">
   <div class="wrap gridx-about-layout">
     <aside class="gridx-sidebar fade-up delay-1" id="gridx-sidebar">
       <!-- Injected profile card -->
@@ -70,7 +100,17 @@
     <div>
       <span class="eyebrow" id="contact-eyebrow"></span>
       <h2 id="contact-heading"></h2>
-      <a class="contact-email" href="#" id="contact-email"></a>
+      <div class="contact-email-wrap">
+        <a class="contact-email" href="#" id="contact-email"></a>
+        <button class="copy-btn" id="copyEmailBtn" title="Copy email" aria-label="Copy email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>Copy</span>
+        </button>
+      </div>
+      <div class="contact-cta-row">
+        <a href="mailto:rafshan50-008@diu.edu.bd?subject=Project%20Inquiry%20-%20Rafshan%20Ekhowan" class="btn solid">Send Email</a>
+        <a href="index.html#projects" class="btn ghost">Explore Projects</a>
+      </div>
     </div>
     <div class="contact-links" id="contact-links">
       <!-- Injected -->
@@ -90,6 +130,9 @@
   </div>
 </div>
 
+<!-- Toast Feedback -->
+<div class="site-toast" id="siteToast">Copied to clipboard!</div>
+
 <footer class="bg-forest">
   <div class="wrap">
     <span id="footer-copy"></span>
@@ -97,7 +140,8 @@
   </div>
 </footer>
 
-<script src="js/render.js?v=9"></script>
-<script src="js/main.js?v=9"></script>
+<script src="js/doodles.js?v=7"></script>
+<script src="js/render.js?v=22"></script>
+<script src="js/main.js?v=22"></script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c17"/>
+      <stop offset="100%" stop-color="#1f2c25"/>
+    </linearGradient>
+    <pattern id="grid3" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad3)"/>
+  <rect width="800" height="600" fill="url(#grid3)"/>
+
+  <!-- Registration -->
+  <path d="M 40 60 L 40 40 L 60 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 60 L 760 40 L 740 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 40 540 L 40 560 L 60 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 540 L 760 560 L 740 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+
+  <text x="50" y="70" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#C17A46" letter-spacing="2">SYS::SEC // NET-MANAGEMENT 03</text>
+  <text x="750" y="70" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="1">AES-256 ENCRYPTED VAULT</text>
+
+  <!-- Central Shield / Vault Lock -->
+  <g transform="translate(400, 270)">
+    <!-- Outer Shield Outline -->
+    <path d="M 0 -110 L 100 -50 L 100 40 Q 100 110 0 140 Q -100 110 -100 40 L -100 -50 Z" fill="rgba(25, 33, 28, 0.9)" stroke="#C17A46" stroke-width="2.5"/>
+    <path d="M 0 -95 L 85 -42 L 85 35 Q 85 95 0 120 Q -85 95 -85 35 L -85 -42 Z" fill="none" stroke="rgba(232, 185, 140, 0.25)" stroke-width="1"/>
+
+    <!-- Keyhole / Padlock mechanism -->
+    <rect x="-30" y="-10" width="60" height="50" rx="8" fill="#141c17" stroke="#E8B98C" stroke-width="2"/>
+    <path d="M -18 -10 L -18 -30 A 18 18 0 0 1 18 -30 L 18 -10" fill="none" stroke="#E8B98C" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="0" cy="10" r="5" fill="#E8B98C"/>
+    <path d="M -2 15 L 2 15 L 4 26 L -4 26 Z" fill="#E8B98C"/>
+
+    <text x="0" y="65" text-anchor="middle" font-family="'Archivo', sans-serif" font-weight="700" font-size="12" fill="#FFFFFF" letter-spacing="1">IPPLAN VAULT</text>
+    <text x="0" y="82" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">AES-256-CBC</text>
+  </g>
+
+  <!-- Network Subnets Map -->
+  <!-- Subnet A -->
+  <rect x="100" y="160" width="160" height="65" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="180" y="188" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">10.240.0.0 / 16</text>
+  <text x="180" y="206" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">CORE ROUTING POOL</text>
+  <path d="M 260 192 L 315 240" stroke="rgba(193, 122, 70, 0.4)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Subnet B -->
+  <rect x="540" y="160" width="160" height="65" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="620" y="188" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">172.16.100.0 / 24</text>
+  <text x="620" y="206" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">MGMT &amp; OOB NETWORK</text>
+  <path d="M 540 192 L 485 240" stroke="rgba(193, 122, 70, 0.4)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Subnet C -->
+  <rect x="100" y="370" width="160" height="65" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="180" y="398" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">VLAN 102 · TRUNK</text>
+  <text x="180" y="416" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="rgba(255,255,255,0.5)">SVG TOPOLOGY MAP</text>
+  <path d="M 260 402 L 315 350" stroke="rgba(193, 122, 70, 0.4)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Subnet D -->
+  <rect x="540" y="370" width="160" height="65" rx="6" fill="rgba(25, 33, 28, 0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="620" y="398" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">HASH KEYSTORE</text>
+  <text x="620" y="416" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">ROLE-BASED ACL</text>
+  <path d="M 540 402 L 485 350" stroke="rgba(193, 122, 70, 0.4)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+  <!-- Terminal Footer Bar -->
+  <rect x="80" y="490" width="640" height="40" rx="6" fill="#141c17" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="100" y="515" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#68d391">&gt; IPPLAN_STATUS: OK · 1,420 ALLOCATED IPS · ZERO COLLISION · PASSWORDS VERIFIED</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c17"/>
+      <stop offset="100%" stop-color="#1e2c24"/>
+    </linearGradient>
+    <pattern id="grid4" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad4)"/>
+  <rect width="800" height="600" fill="url(#grid4)"/>
+
+  <!-- Registration -->
+  <path d="M 40 60 L 40 40 L 60 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 60 L 760 40 L 740 40" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 40 540 L 40 560 L 60 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+  <path d="M 760 540 L 760 560 L 740 560" fill="none" stroke="#C17A46" stroke-width="2"/>
+
+  <text x="50" y="70" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#C17A46" letter-spacing="2">SYS::TIME // INFRASTRUCTURE 04</text>
+  <text x="750" y="70" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="11" fill="rgba(255,255,255,0.4)" letter-spacing="1">STRATUM 2 TIME REFERENCE</text>
+
+  <!-- Large Precision Clock Dial -->
+  <g transform="translate(400, 280)">
+    <!-- Outer Dial with tick marks -->
+    <circle cx="0" cy="0" r="160" fill="rgba(25, 33, 28, 0.85)" stroke="#C17A46" stroke-width="2"/>
+    <circle cx="0" cy="0" r="152" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="110" fill="none" stroke="rgba(232, 185, 140, 0.2)" stroke-width="1" stroke-dasharray="4 6"/>
+
+    <!-- Clock Ticks -->
+    <line x1="0" y1="-152" x2="0" y2="-138" stroke="#E8B98C" stroke-width="3"/>
+    <line x1="152" y1="0" x2="138" y2="0" stroke="#E8B98C" stroke-width="3"/>
+    <line x1="0" y1="152" x2="0" y2="138" stroke="#E8B98C" stroke-width="3"/>
+    <line x1="-152" y1="0" x2="-138" y2="0" stroke="#E8B98C" stroke-width="3"/>
+
+    <!-- Pulse radar beam -->
+    <path d="M 0 0 L 105 -105 A 150 150 0 0 1 150 0 Z" fill="rgba(193, 122, 70, 0.15)"/>
+    <line x1="0" y1="0" x2="106" y2="-106" stroke="#C17A46" stroke-width="2"/>
+
+    <!-- Center Pulse Core -->
+    <circle cx="0" cy="0" r="28" fill="#141c17" stroke="#E8B98C" stroke-width="2"/>
+    <circle cx="0" cy="0" r="8" fill="#68d391"/>
+
+    <text x="0" y="45" text-anchor="middle" font-family="'Archivo', sans-serif" font-weight="700" font-size="14" fill="#FFFFFF">LOCAL NTP</text>
+    <text x="0" y="65" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">UDP PORT 123</text>
+    <text x="0" y="82" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#68d391">OFFSET &lt; 0.04ms</text>
+  </g>
+
+  <!-- Connected Client Nodes -->
+  <!-- Client 1: Linux Servers -->
+  <rect x="80" y="240" width="140" height="60" rx="6" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="150" y="268" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">PROXMOX CLUSTER</text>
+  <text x="150" y="286" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#68d391">CHRONY SYNCED</text>
+  <line x1="220" y1="270" x2="240" y2="275" stroke="#C17A46" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Client 2: IPTSP Routers -->
+  <rect x="580" y="240" width="140" height="60" rx="6" fill="rgba(25, 33, 28, 0.8)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="650" y="268" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">ROUTER / SWITCHES</text>
+  <text x="650" y="286" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#E8B98C">MIKROTIK &amp; CISCO</text>
+  <line x1="580" y1="270" x2="560" y2="275" stroke="#C17A46" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Time Readout Bar -->
+  <rect x="180" y="490" width="440" height="42" rx="6" fill="#141c17" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <circle cx="210" cy="511" r="5" fill="#68d391"/>
+  <text x="230" y="516" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#FFFFFF">UTC PULSE: 2026-09-07 · 00:00:00.000 Z</text>
+</svg>

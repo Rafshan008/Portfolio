@@ -62,6 +62,25 @@ function renderSite(data) {
   }
 
   // ── GRIDX ABOUT SECTION ──
+  // Helper for crisp vector social icons
+  const getSocialIconSvg = (name) => {
+    const n = (name || '').toLowerCase();
+    if (n.includes('linkedin')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z"/></svg>`;
+    }
+    if (n.includes('github')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>`;
+    }
+    if (n.includes('facebook')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>`;
+    }
+    if (n.includes('instagram')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+    }
+    return name[0];
+  };
+
+  // ── GRIDX ABOUT SECTION ──
   const sidebar = document.getElementById('gridx-sidebar');
   const content = document.getElementById('gridx-content');
   if (sidebar && data.profile) {
@@ -69,13 +88,18 @@ function renderSite(data) {
       <div class="gridx-profile-card">
         <div class="gridx-avatar">
           <img src="${data.profile.avatar || ''}" alt="Avatar">
+          <span class="avatar-badge" title="Systems Engineer &amp; Photographer">✓</span>
         </div>
         <h3 class="gridx-name">${data.meta.title.split('—')[0].trim()}</h3>
         <p class="gridx-handle">${data.profile.handle || ''}</p>
+        <div class="gridx-role-pill">SYS / NETWORK EXEC · BRACNET</div>
         <div class="gridx-socials">
-          ${(data.profile.socials || []).map(s => `<a href="${s.url}" title="${s.name}" class="social-icon">${s.name[0]}</a>`).join('')}
+          ${(data.profile.socials || []).map(s => `<a href="${s.url}" title="${s.name}" class="social-icon" target="_blank" rel="noopener">${getSocialIconSvg(s.name)}</a>`).join('')}
         </div>
-        <a href="#contact" class="btn gridx-btn-solid">Contact me</a>
+        <div class="gridx-profile-actions">
+          <a href="#contact" class="btn gridx-btn-solid">Get In Touch</a>
+          <a href="mailto:rafshan50-008@diu.edu.bd?subject=CV%20Request%20-%20Rafshan%20Ekhowan" class="btn gridx-btn-ghost">Request Full CV</a>
+        </div>
       </div>
     `;
   }
@@ -83,22 +107,25 @@ function renderSite(data) {
   if (content && data.profile) {
     let aboutHtml = `
       <div class="gridx-block">
-        <h4 class="gridx-block-title">ABOUT ME</h4>
+        <h4 class="gridx-block-title">PROFILE &amp; OVERVIEW</h4>
         ${data.profile.paragraphs.map(p => `<p class="gridx-p">${p}</p>`).join('')}
       </div>
     `;
 
-    if (data.experience && data.experience.timeline) {
+    if (data.experience && data.experience.timeline && data.experience.timeline.length > 0) {
       aboutHtml += `
         <div class="gridx-block">
-          <h4 class="gridx-block-title">EXPERIENCE</h4>
+          <h4 class="gridx-block-title">PRODUCTION EXPERIENCE</h4>
           <div class="gridx-timeline">
             ${data.experience.timeline.map(item => `
               <div class="gridx-tl-item">
+                <div class="gridx-tl-dot"></div>
                 <div class="gridx-tl-date">${item.date}</div>
                 <div class="gridx-tl-role">${item.role}</div>
                 <div class="gridx-tl-org">${item.org}</div>
-                <p class="gridx-p">${item.bullets.join(' ')}</p>
+                <ul class="gridx-tl-bullets">
+                  ${(item.bullets || []).map(b => `<li>${b}</li>`).join('')}
+                </ul>
               </div>
             `).join('')}
           </div>
@@ -109,10 +136,11 @@ function renderSite(data) {
     if (data.profile.education && data.profile.education.length > 0) {
       aboutHtml += `
         <div class="gridx-block">
-          <h4 class="gridx-block-title">EDUCATION</h4>
+          <h4 class="gridx-block-title">EDUCATION &amp; ACADEMICS</h4>
           <div class="gridx-timeline">
             ${data.profile.education.map(item => `
               <div class="gridx-tl-item">
+                <div class="gridx-tl-dot"></div>
                 <div class="gridx-tl-date">${item.year}</div>
                 <div class="gridx-tl-role">${item.degree}</div>
                 <div class="gridx-tl-org">${item.institution}</div>
@@ -127,14 +155,16 @@ function renderSite(data) {
     if (data.skills && data.skills.columns) {
       aboutHtml += `
         <div class="gridx-block">
-          <h4 class="gridx-block-title">SKILLS</h4>
-          <div class="gridx-skills-grid">
-            ${data.skills.columns.map(col => col.tags.map(t => `
-              <div class="gridx-skill-item">
-                <div class="gridx-skill-name">${t}</div>
-                <p class="gridx-p" style="font-size:11px;">Non enim praesent</p>
+          <h4 class="gridx-block-title">TECHNICAL COMPETENCIES &amp; TOOLING</h4>
+          <div class="gridx-skills-container">
+            ${data.skills.columns.map(col => `
+              <div class="gridx-skills-group">
+                <div class="gridx-skill-group-title">${col.heading}</div>
+                <div class="gridx-skills-pill-row">
+                  ${col.tags.map(t => `<span class="gridx-skill-pill"><span class="skill-dot"></span>${t}</span>`).join('')}
+                </div>
               </div>
-            `).join('')).join('')}
+            `).join('')}
           </div>
         </div>
       `;
@@ -143,10 +173,11 @@ function renderSite(data) {
     if (data.profile.awards && data.profile.awards.length > 0) {
       aboutHtml += `
         <div class="gridx-block">
-          <h4 class="gridx-block-title">AWARDS</h4>
+          <h4 class="gridx-block-title">HONORS &amp; AWARDS</h4>
           <div class="gridx-timeline">
             ${data.profile.awards.map(item => `
               <div class="gridx-tl-item">
+                <div class="gridx-tl-dot"></div>
                 <div class="gridx-tl-date">${item.date}</div>
                 <div class="gridx-tl-role">${item.title}</div>
                 <p class="gridx-p">${item.desc}</p>
@@ -160,22 +191,59 @@ function renderSite(data) {
     content.innerHTML = aboutHtml;
   }
 
+  // ── EXPERIENCE SECTION (HOMEPAGE) ──
+  const expTimeline = document.getElementById('exp-timeline');
+  const expNote = document.getElementById('exp-note');
+  if (expNote && data.experience) expNote.textContent = data.experience.sectionNote;
+  if (expTimeline && data.experience && data.experience.timeline) {
+    expTimeline.innerHTML = data.experience.timeline.map((item, idx) => `
+      <div class="tl-item fade-up delay-${(idx % 3) + 1}">
+        <div class="tl-date-col">
+          <span class="tl-date-badge">${item.date}</span>
+        </div>
+        <div class="tl-body">
+          <div class="tl-role">${item.role}</div>
+          <div class="tl-org"><span class="org-dot"></span>${item.org}</div>
+          <ul class="tl-bullets">
+            ${(item.bullets || []).map(b => `<li>${b}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `).join('');
+  }
+
   // ── GRIDX PROJECTS ──
   const projGrid = document.getElementById('proj-grid');
   if (projGrid && data.projects.items) {
     projGrid.innerHTML = data.projects.items.map((proj, idx) => `
-      <div class="gridx-proj-card" onclick="openLightbox('project', ${idx})">
+      <div class="gridx-proj-card" data-category="${proj.category}" onclick="openLightbox('project', ${idx})">
         <div class="gridx-proj-img-wrap">
-          <img src="${proj.thumbnail || '/uploads/placeholder.jpg'}" alt="${proj.name}">
+          <img src="${proj.thumbnail || '/uploads/project-ippbx.svg'}" alt="${proj.name}" loading="lazy">
+          <span class="gridx-proj-year">${proj.year || '2024'}</span>
         </div>
         <div class="gridx-proj-meta">
-          <div class="gridx-proj-cat">${proj.category || 'PROJECT'}</div>
+          <div class="gridx-proj-cat-badge">${proj.category || 'PROJECT'}</div>
           <div class="gridx-proj-title">${proj.name}</div>
+          <p class="gridx-proj-sub">${proj.description || ''}</p>
+          <div class="gridx-proj-tags">
+            ${(proj.tags || []).slice(0, 3).map(tag => `<span class="proj-tag-chip">${tag}</span>`).join('')}
+          </div>
         </div>
-        <div class="gridx-proj-icon">→</div>
+        <div class="gridx-proj-icon" title="View Case Study">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
       </div>
     `).join('');
+
+    // Initialize filter buttons if available
+    if (typeof initProjectFilters === 'function') {
+      initProjectFilters();
+    }
   }
+
+  // Initialize mobile drawer and clipboard copy
+  if (typeof initMobileDrawer === 'function') initMobileDrawer();
+  if (typeof initClipboardCopy === 'function') initClipboardCopy();
 
   // Photography
   const photoNote = document.getElementById('photo-note');
@@ -361,58 +429,104 @@ window.openLightbox = function(type, idx) {
       lb.classList.add('gridx-project-mode');
       lbMedia.innerHTML = `
         <div class="gridx-proj-detail">
-          <h5 class="gridx-proj-det-eyebrow">${proj.category} - ${proj.client}</h5>
-          <h2 class="gridx-proj-det-title">AESTHETIC DESIGN FOR <br>${proj.name}</h2>
+          <div class="gridx-proj-det-header">
+            <h5 class="gridx-proj-det-eyebrow">${proj.category} // ${proj.client || 'BRACNet'}</h5>
+            <h2 class="gridx-proj-det-title">${proj.name}</h2>
+          </div>
           
           <img src="${proj.thumbnail}" class="gridx-proj-det-hero" alt="${proj.name}">
           
           <div class="gridx-proj-det-split">
             <div class="gridx-proj-det-meta">
-              <p><span>Year</span><br><b>${proj.year || '2023'}</b></p>
-              <p><span>Client</span><br><b>${proj.client || '-'}</b></p>
-              <p><span>Services</span><br><b>${proj.services || '-'}</b></p>
-              <p><span>Project</span><br><b>${proj.name}</b></p>
+              <p><span>Year</span><br><b>${proj.year || '2024'}</b></p>
+              <p><span>Client / Org</span><br><b>${proj.client || 'BRACNet'}</b></p>
+              <p><span>Services</span><br><b>${proj.services || 'Systems & Network'}</b></p>
+              <p><span>Category</span><br><b>${proj.category}</b></p>
             </div>
             <div class="gridx-proj-det-desc">
-              <h4>DESCRIPTION</h4>
+              <h4>SYSTEM OVERVIEW &amp; ARCHITECTURE</h4>
               <p>${proj.longDescription || proj.description}</p>
+              <div class="gridx-proj-modal-tags">
+                ${(proj.tags || []).map(t => `<span class="proj-tag-chip">${t}</span>`).join('')}
+              </div>
             </div>
           </div>
           
-          <div class="gridx-proj-det-gallery">
-            ${(proj.gallery || []).map(g => `<img src="${g}" alt="Gallery image">`).join('')}
-          </div>
-          
-          <div style="text-align:center; margin-top: 80px;">
-            <button class="btn gridx-btn-solid" onclick="document.getElementById('lightbox-close').click()" style="padding: 16px 40px; font-size:16px;">Close Project</button>
+          <div style="text-align:center; margin-top: 36px; padding-bottom: 20px;">
+            <button class="btn solid" onclick="window.closeLightbox()" style="padding: 12px 36px; font-size: 13px;">Close Case Study</button>
           </div>
         </div>
       `;
     }
   }
   
+  if (window.lenis && typeof window.lenis.stop === 'function') {
+    window.lenis.stop();
+  }
+  lb.setAttribute('data-lenis-prevent', 'true');
   lb.classList.add('active');
+  const lbContent = lb.querySelector('.lightbox-content');
+  if (lbContent) {
+    lbContent.setAttribute('data-lenis-prevent', 'true');
+    lbContent.scrollTop = 0;
+    if (typeof lbContent.scrollTo === 'function') {
+      lbContent.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }
   document.body.style.overflow = 'hidden'; // prevent background scroll
+};
+
+window.closeLightbox = function() {
+  const lb = document.getElementById('site-lightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  lb.classList.remove('gridx-project-mode');
+  lb.removeAttribute('data-lenis-prevent');
+  const lbContent = lb.querySelector('.lightbox-content');
+  if (lbContent) lbContent.removeAttribute('data-lenis-prevent');
+  document.body.style.overflow = '';
+  const lbMedia = document.getElementById('lightbox-media');
+  if (lbMedia) lbMedia.innerHTML = ''; // stop video playback
+  if (window.lenis && typeof window.lenis.start === 'function') {
+    window.lenis.start();
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   const lb = document.getElementById('site-lightbox');
   const closeBtn = document.getElementById('lightbox-close');
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      lb.classList.remove('active');
-      lb.classList.remove('gridx-project-mode');
-      document.body.style.overflow = '';
-      document.getElementById('lightbox-media').innerHTML = ''; // stop video playback
-    });
+    closeBtn.addEventListener('click', window.closeLightbox);
   }
   if (lb) {
+    // Direct wheel routing inside modal so cursor anywhere smoothly scrolls the card
+    if (!lb._wheelBound) {
+      lb.addEventListener('wheel', (e) => {
+        if (lb.classList.contains('active')) {
+          const c = lb.querySelector('.lightbox-content');
+          if (c && c.scrollHeight > c.clientHeight) {
+            let delta = e.deltaY;
+            if (e.deltaMode === 1) delta *= 33;
+            else if (e.deltaMode === 2) delta *= c.clientHeight;
+            c.scrollTop += delta;
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      }, { passive: false });
+      lb._wheelBound = true;
+    }
+
     lb.addEventListener('click', (e) => {
-      if (e.target === lb || e.target.classList.contains('lightbox-content') || e.target.id === 'lightbox-media') {
-        lb.classList.remove('active');
-        lb.classList.remove('gridx-project-mode');
-        document.body.style.overflow = '';
-        document.getElementById('lightbox-media').innerHTML = '';
+      // In project mode, only close when clicking the backdrop overlay itself
+      if (lb.classList.contains('gridx-project-mode')) {
+        if (e.target === lb) {
+          window.closeLightbox();
+        }
+      } else {
+        if (e.target === lb || e.target.classList.contains('lightbox-content') || e.target.id === 'lightbox-media') {
+          window.closeLightbox();
+        }
       }
     });
   }
@@ -523,7 +637,86 @@ function updateCoverflowTransform() {
   }
 }
 
-// Bind arrows
+// ── 4. Project Category Filtering ───────────────────────
+window.initProjectFilters = function() {
+  const filterBtns = document.querySelectorAll('.proj-filter-btn');
+  const cards = document.querySelectorAll('.gridx-proj-card');
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn.dataset.projFilter || 'all').toUpperCase();
+
+      cards.forEach(card => {
+        const cat = (card.dataset.category || '').toUpperCase();
+        const match = (filter === 'ALL' || cat === filter);
+        if (match) {
+          card.style.display = 'flex';
+          if (window.gsap) {
+            gsap.fromTo(card, { opacity: 0, scale: 0.95, y: 15 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+          } else {
+            card.style.opacity = '1';
+          }
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    });
+  });
+};
+
+// ── 5. Mobile Navigation Drawer ─────────────────────────
+window.initMobileDrawer = function() {
+  const burger = document.getElementById('navBurger');
+  const drawer = document.getElementById('mobileDrawer');
+  const close = document.getElementById('drawerClose');
+  const links = document.querySelectorAll('.drawer-link');
+
+  if (!burger || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  burger.onclick = openDrawer;
+  if (close) close.onclick = closeDrawer;
+  links.forEach(l => l.addEventListener('click', closeDrawer));
+};
+
+// ── 6. 1-Click Clipboard Copy with Feedback ─────────────
+window.initClipboardCopy = function() {
+  const toast = document.getElementById('siteToast');
+  function triggerToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  if (copyEmailBtn) {
+    copyEmailBtn.onclick = (e) => {
+      e.preventDefault();
+      const email = document.getElementById('contact-email')?.textContent || 'rafshan50-008@diu.edu.bd';
+      navigator.clipboard.writeText(email).then(() => {
+        triggerToast('Email copied to clipboard!');
+      }).catch(() => {
+        triggerToast('Email: ' + email);
+      });
+    };
+  }
+};
+
+// Bind arrows and keyboard / wheel / touch navigation
 document.addEventListener('DOMContentLoaded', () => {
   const prev = document.getElementById('coverflow-prev');
   const next = document.getElementById('coverflow-next');
@@ -540,5 +733,83 @@ document.addEventListener('DOMContentLoaded', () => {
       coverflowIndex = (coverflowIndex + 1) % coverflowPhotos.length;
       updateCoverflowTransform();
     });
+  }
+
+  // Keyboard navigation for coverflow & lightbox
+  document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('site-lightbox');
+    if (lb && lb.classList.contains('active')) {
+      if (e.key === 'Escape') {
+        if (typeof window.closeLightbox === 'function') window.closeLightbox();
+        return;
+      }
+      const c = lb.querySelector('.lightbox-content');
+      if (c && c.scrollHeight > c.clientHeight) {
+        if (e.key === 'ArrowDown') {
+          c.scrollTop += 60;
+          e.preventDefault();
+        } else if (e.key === 'ArrowUp') {
+          c.scrollTop -= 60;
+          e.preventDefault();
+        } else if (e.key === 'PageDown' || e.key === ' ') {
+          c.scrollTop += c.clientHeight * 0.8;
+          e.preventDefault();
+        } else if (e.key === 'PageUp') {
+          c.scrollTop -= c.clientHeight * 0.8;
+          e.preventDefault();
+        }
+      }
+      return;
+    }
+    
+    // Only scroll if work section is in or near viewport or coverflow is active
+    if (e.key === 'ArrowLeft') {
+      const prevBtn = document.getElementById('coverflow-prev');
+      if (prevBtn) prevBtn.click();
+    } else if (e.key === 'ArrowRight') {
+      const nextBtn = document.getElementById('coverflow-next');
+      if (nextBtn) nextBtn.click();
+    }
+  });
+
+  // Wheel scrub over coverflow viewport
+  const coverflowViewport = document.querySelector('.coverflow-viewport');
+  if (coverflowViewport) {
+    let wheelTimeout = null;
+    coverflowViewport.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > 25 || Math.abs(e.deltaY) > 35) {
+        if (!wheelTimeout) {
+          wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 140);
+          if (e.deltaX > 0 || e.deltaY > 0) {
+            document.getElementById('coverflow-next')?.click();
+          } else {
+            document.getElementById('coverflow-prev')?.click();
+          }
+        }
+      }
+    }, { passive: true });
+
+    // Touch swipe gestures
+    let touchStartX = 0;
+    let touchEndX = 0;
+    coverflowViewport.addEventListener('touchstart', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchStartX = e.changedTouches[0].screenX;
+      }
+    }, { passive: true });
+    
+    coverflowViewport.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length > 0) {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            document.getElementById('coverflow-next')?.click();
+          } else {
+            document.getElementById('coverflow-prev')?.click();
+          }
+        }
+      }
+    }, { passive: true });
   }
 });
