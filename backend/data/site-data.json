@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Rafshan Ekhowan — Systems & Photography",
+    "title": "Rafshan Ekhowan — IPTSP, Systems & Photography",
     "description": "Rafshan Ekhowan — IPTSP, Network & Systems Engineer, and photographer across street, landscape, product and abstract work."
   },
   "hero": {
@@ -18,29 +18,29 @@
         "value": "ONLINE"
       }
     ],
-    "eyebrow": "Two disciplines, one operator",
+    "eyebrow": "Two disciplines, one frame",
     "titleLine1": "Its Not Photography ",
     "titleLine2": "Its Photo Art",
-    "subtitle": "I'm Rafshan — a Network & Systems Executive and photographer. Same instinct either way: read the structure before everyone else sees it.",
+    "subtitle": "I'm Rafshan — a IPTSP Network & Systems Jr. Executive and photographer. \nSame instinct either way: read the structure before everyone else sees it.",
     "ctaPrimary": {
-      "label": "View Experience",
+      "label": "Experience",
       "href": "#experience"
     },
     "ctaSecondary": {
-      "label": "See Photography",
+      "label": "Photography",
       "href": "#work"
     },
     "image": {
       "src": "/uploads/1788762712922-928290355.jpg",
-      "alt": "Rafshan portrait"
+      "alt": "Rafshan Ekhowan"
     }
   },
   "profile": {
-    "sectionNote": "Executive, Network & System Solution at BRACNet. B.Sc. in Information & Communication Engineering.",
+    "sectionNote": "Jr. Executive, IPTSP, Network & System Solution at BRACNet. B.Sc. in Information & Communication Engineering from Daffodil International University.",
     "lead": "Network & System Administration professional managing enterprise network and server infrastructure, Linux systems, virtualization, and IPTSP operations.",
     "paragraphs": [
       "Experienced in Proxmox virtualization, network and server monitoring, infrastructure troubleshooting, security, backup, and resource optimization — with a strong record of maintaining high availability across production environments.",
-      "Proven ability to identify and resolve technical issues, improve operational reliability, and support secure, efficient IT infrastructure — the same eye for what's about to break (or what's about to happen) that shows up in the photography."
+      "Proven ability to identify and resolve technical issues, improve operational reliability, and support secure, efficient IT infrastructure — the same eye for what's about to break that shows up in the photography."
     ],
     "avatar": "/uploads/1787488666504-112534722.jpg",
     "handle": "@rafshan_ekhowan",
@@ -48,37 +48,41 @@
       {
         "name": "LinkedIn",
         "icon": "linkedin",
-        "url": "#"
+        "url": "https://www.linkedin.com/in/rafshan-ekhowan-463748275/"
       },
       {
         "name": "Facebook",
         "icon": "facebook",
-        "url": "#"
+        "url": "https://www.facebook.com/raphasana.lubdhaka#"
       },
       {
         "name": "Instagram",
         "icon": "instagram",
-        "url": "#"
+        "url": "https://www.instagram.com/rafshan_ekhowan/"
+      },
+      {
+        "name": "Flickr",
+        "url": "https://www.flickr.com/photos/185689885@N03/"
       }
     ],
     "education": [
       {
-        "year": "2017 - 2021",
+        "year": "2020-2023",
         "degree": "B.Sc. in Information & Communication Engineering",
-        "institution": "University Name",
+        "institution": "Daffodil International University",
         "desc": "Studied networking, systems, and communication engineering."
       }
     ],
     "awards": [
       {
-        "date": "14 May 2020",
-        "title": "Best Project Award",
-        "desc": "Awarded for exceptional network design."
+        "date": "10 August 2020",
+        "title": "Flickr x FUJIFILM \"Shine a Light\" photography contest",
+        "desc": " Won the global Flickr x FUJIFILM \"Shine a Light\" photography contest.\nThe competition, organized by the major photo-sharing platform Flickr in collaboration with FUJIFILM,\n aimed to celebrate resilience, hope, and creativity through visual storytelling. "
       }
     ]
   },
   "experience": {
-    "sectionNote": "Roles spanning from IPTSP intern to Executive, managing enterprise network infrastructure at BRACNet.",
+    "sectionNote": "Roles spanning from IPTSP intern to Executive, managing enterprise network infrastructure and Servers at BRACNet.",
     "timeline": []
   },
   "projects": {
@@ -88,12 +92,12 @@
         "id": "proj-1",
         "name": "IP PBX & Call Center System",
         "category": "TELEPHONY",
-        "description": "Deployed and administered an Asterisk-based IP PBX platform with automated call routing, ACD queues, and CDR analytics.",
+        "description": "Assist in Building  and administered a Call Center  IP PBX platform.",
         "thumbnail": "/uploads/project-ippbx.svg",
         "client": "BRACNet",
-        "services": "VoIP, Asterisk, Linux",
-        "year": "2024",
-        "longDescription": "Comprehensive production deployment of an Asterisk-based IP PBX platform (Issabel). Configured high-capacity SIP trunks, interactive voice response (IVR) flows, automated call distribution (ACD) queues for support teams, and real-time CDR analytics for operational monitoring.",
+        "services": "VoIP, Freeswitch, Linux, laravel",
+        "year": "2026",
+        "longDescription": "Comprehensive production deployment of an Call center. Configured high-capacity SIP trunks, interactive voice response (IVR) flows, automated call distribution (ACD) queues for support teams, and real-time CDR analytics for operational monitoring with Agent KPI calculation.",
         "gallery": [],
         "tags": [
           "Asterisk",
@@ -110,7 +114,7 @@
         "thumbnail": "/uploads/project-ai-voice.svg",
         "client": "Internal / BRACNet",
         "services": "AI, Python, AGI",
-        "year": "2024",
+        "year": "2025",
         "longDescription": "Integrated local open-source LLMs via Ollama with Asterisk PBX using custom Python AGI (Asterisk Gateway Interface) scripts. Features low-latency speech-to-text (Whisper), prompt-orchestrated dialogue management, and realistic text-to-speech synthesis with sub-300ms turnaround.",
         "gallery": [],
         "tags": [
@@ -122,14 +126,14 @@
       },
       {
         "id": "proj-3",
-        "name": "IPPLAN Vault",
+        "name": "IPPLAN",
         "category": "NETWORKING",
-        "description": "Enhanced a network IP address management system with dynamic SVG topology diagrams and an AES-256 password vault.",
+        "description": "Enhanced a network IP address management system with dynamic SVG diagrams and an  password vault.",
         "thumbnail": "/uploads/project-ipplan.svg",
         "client": "BRACNet",
         "services": "PHP, MySQL, Security",
-        "year": "2023",
-        "longDescription": "Extended the IPPLAN infrastructure management platform with an integrated credential keystore encrypted via AES-256-CBC. Developed automated SVG network topology visualizers and role-based access control for sysadmin teams across multiple data centers.",
+        "year": "2025",
+        "longDescription": "Extended the IPPLAN infrastructure management platform with an integrated credential keystore encrypted. Developed automated SVG network topology visualizers and role-based access control for sysadmin teams across multiple data centers.",
         "gallery": [],
         "tags": [
           "PHP",
@@ -146,7 +150,7 @@
         "thumbnail": "/uploads/project-ntp.svg",
         "client": "Enterprise Network",
         "services": "Linux, Chrony, NTP",
-        "year": "2023",
+        "year": "2024",
         "longDescription": "Configured local Stratum 2 NTP time servers utilizing Chrony daemon on hardened Linux hosts. Maintained synchronized timestamping across Proxmox VM clusters, VoIP switches, and security loggers, eliminating drift and timestamp discrepancies.",
         "gallery": [
           "/uploads/project-ntp.svg"
@@ -166,7 +170,7 @@
         "thumbnail": "/uploads/project-truenas.svg",
         "client": "Internal Operations",
         "services": "TrueNAS, ZFS, SFTP",
-        "year": "2023",
+        "year": "2025",
         "longDescription": "Engineered enterprise-grade storage using TrueNAS CORE with RAID-Z2 pool redundancy. Implemented automated ZFS snapshot schedules, off-site replication pipelines, and secure FTP over TLS (FTPS) with isolated user chroot environments.",
         "gallery": [
           "/uploads/project-truenas.svg"
@@ -311,14 +315,15 @@
     "headingStrong": "something worth it.",
     "email": "rafshan50-008@diu.edu.bd",
     "phone": "+8801706736796",
-    "phoneDisplay": "+880 1706-736796",
-    "linkedin": "https://linkedin.com/in/rafshan-ekhowan",
-    "linkedinDisplay": "linkedin.com/in/rafshan-ekhowan",
-    "instagram": "#",
-    "instagramDisplay": "Instagram"
+    "phoneDisplay": "+8801706736796",
+    "linkedin": "https://www.linkedin.com/in/rafshan-ekhowan-463748275/",
+    "linkedinDisplay": "linkedin",
+    "instagram": "https://www.facebook.com/raphasana.lubdhaka#",
+    "instagramDisplay": "facebook"
   },
   "footer": {
     "copyright": "© 2026 Rafshan Ekhowan. All rights reserved.",
     "location": "Dhaka, Bangladesh"
-  }
+  },
+  "customSections": []
 }
