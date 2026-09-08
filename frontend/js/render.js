@@ -77,7 +77,16 @@ function renderSite(data) {
     if (n.includes('instagram')) {
       return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
     }
-    return name[0];
+    if (n.includes('flickr')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5" fill-opacity="0.75"/></svg>`;
+    }
+    if (n.includes('twitter') || n.includes(' x') || n === 'x') {
+      return `<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+    }
+    if (n.includes('youtube')) {
+      return `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+    }
+    return `<span style="font-family:var(--mono); font-weight:700; font-size:12px;">${(name || 'S')[0].toUpperCase()}</span>`;
   };
 
   // ── GRIDX ABOUT SECTION ──
@@ -94,7 +103,11 @@ function renderSite(data) {
         <p class="gridx-handle">${data.profile.handle || ''}</p>
         <div class="gridx-role-pill">SYS / NETWORK EXEC · BRACNET</div>
         <div class="gridx-socials">
-          ${(data.profile.socials || []).map(s => `<a href="${s.url}" title="${s.name}" class="social-icon" target="_blank" rel="noopener">${getSocialIconSvg(s.name)}</a>`).join('')}
+          ${(data.profile.socials || []).map(s => `
+            <a href="${s.url}" title="${s.name}" class="social-icon" target="_blank" rel="noopener">
+              ${s.logo ? `<img src="${s.logo}" alt="${s.name}" class="social-logo-img">` : getSocialIconSvg(s.name)}
+            </a>
+          `).join('')}
         </div>
         <div class="gridx-profile-actions">
           <a href="#contact" class="btn gridx-btn-solid">Get In Touch</a>
@@ -366,12 +379,69 @@ function renderSite(data) {
   }
 
   const contactLinks = document.getElementById('contact-links');
-  if (contactLinks) {
-    contactLinks.innerHTML = `
-      <a href="tel:${data.contact.phone.replace(/[^0-9+]/g, '')}">${data.contact.phoneDisplay}</a>
-      <a href="${data.contact.linkedin}" target="_blank" rel="noopener">${data.contact.linkedinDisplay}</a>
-      <a href="${data.contact.instagram}" target="_blank" rel="noopener">${data.contact.instagramDisplay}</a>
-    `;
+  if (contactLinks && data.contact) {
+    let linksHtml = '';
+    
+    // Phone Link
+    if (data.contact.phoneDisplay) {
+      const phoneClean = (data.contact.phone || '').replace(/[^0-9+]/g, '');
+      const logo = data.contact.phoneLogo;
+      linksHtml += `
+        <a href="tel:${phoneClean}">
+          <span class="contact-link-left">
+            ${logo ? `<img src="${logo}" class="contact-link-logo" alt="Phone">` : ''}
+            <span>${data.contact.phoneDisplay}</span>
+          </span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      `;
+    }
+    
+    // LinkedIn Link
+    if (data.contact.linkedinDisplay) {
+      const logo = data.contact.linkedinLogo;
+      linksHtml += `
+        <a href="${data.contact.linkedin || '#'}" target="_blank" rel="noopener">
+          <span class="contact-link-left">
+            ${logo ? `<img src="${logo}" class="contact-link-logo" alt="${data.contact.linkedinDisplay}">` : ''}
+            <span>${data.contact.linkedinDisplay}</span>
+          </span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      `;
+    }
+    
+    // Instagram / Social 2 Link
+    if (data.contact.instagramDisplay) {
+      const logo = data.contact.instagramLogo;
+      linksHtml += `
+        <a href="${data.contact.instagram || '#'}" target="_blank" rel="noopener">
+          <span class="contact-link-left">
+            ${logo ? `<img src="${logo}" class="contact-link-logo" alt="${data.contact.instagramDisplay}">` : ''}
+            <span>${data.contact.instagramDisplay}</span>
+          </span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      `;
+    }
+
+    // Additional Contact Socials (if configured)
+    if (Array.isArray(data.contact.socials)) {
+      data.contact.socials.forEach(s => {
+        if (!s.name && !s.url) return;
+        linksHtml += `
+          <a href="${s.url || '#'}" target="_blank" rel="noopener">
+            <span class="contact-link-left">
+              ${s.logo ? `<img src="${s.logo}" class="contact-link-logo" alt="${s.name}">` : ''}
+              <span>${s.name}</span>
+            </span>
+            <span class="contact-link-arrow">↗</span>
+          </a>
+        `;
+      });
+    }
+
+    contactLinks.innerHTML = linksHtml;
   }
 
   // Footer
