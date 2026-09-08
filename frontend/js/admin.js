@@ -221,17 +221,47 @@ function renderEditor() {
         <div class="form-group"><label>Paragraph 1</label><textarea id="prof-p0">${esc(siteData.profile.paragraphs?.[0] || '')}</textarea></div>
         <div class="form-group"><label>Paragraph 2</label><textarea id="prof-p1">${esc(siteData.profile.paragraphs?.[1] || '')}</textarea></div>
         
-        <h3 style="margin-top:32px; border-bottom:1px solid #333; padding-bottom:8px;">Social Links</h3>
+        <h3 style="margin-top:32px; border-bottom:1px solid #333; padding-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+          <span>Social Links (Profile)</span>
+          <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">Custom PNG logos are optional</span>
+        </h3>
         <div id="prof-socials-list">
           ${(siteData.profile.socials || []).map((s, idx) => `
-            <div class="form-row social-row" data-idx="${idx}" style="margin-top:16px;">
-              <div class="form-group"><label>Platform Name</label><input type="text" class="soc-name" value="${esc(s.name)}"></div>
-              <div class="form-group"><label>URL</label><input type="text" class="soc-url" value="${esc(s.url)}"></div>
-              <button class="btn danger btn-del-soc" data-idx="${idx}" style="height:44px; margin-top:22px;">X</button>
+            <div class="item-card social-card social-row" data-idx="${idx}" style="margin-top:16px; padding:18px;">
+              <div class="card-header" style="margin-bottom:14px; padding-bottom:8px;">
+                <h4 style="font-size:14px; margin:0;">${esc(s.name || `Social Link #${idx + 1}`)}</h4>
+                <button class="btn danger btn-del-soc" data-idx="${idx}" style="padding:6px 14px; font-size:11px;">Delete</button>
+              </div>
+              <div class="form-row">
+                <div class="form-group" style="flex:1;">
+                  <label>Platform Name</label>
+                  <input type="text" class="soc-name" value="${esc(s.name || '')}" placeholder="e.g. LinkedIn, Facebook, Instagram">
+                </div>
+                <div class="form-group" style="flex:2;">
+                  <label>Profile / Channel URL</label>
+                  <input type="text" class="soc-url" value="${esc(s.url || '')}" placeholder="https://...">
+                </div>
+              </div>
+              <div class="form-row" style="align-items:flex-end;">
+                <div class="form-group" style="flex:2;">
+                  <label>Custom PNG Logo URL (Optional)</label>
+                  <input type="text" class="soc-logo" id="soc-logo-${idx}" value="${esc(s.logo || '')}" placeholder="Optional: /uploads/... or image URL" oninput="updateLogoPreview('soc-logo-${idx}', 'preview-soc-logo-${idx}')">
+                </div>
+                <div class="form-group" style="flex:1.2;">
+                  <label>Or Upload PNG Logo</label>
+                  <input type="file" accept="image/png,image/*" onchange="handleFileUpload(this, 'soc-logo-${idx}')">
+                </div>
+                <div class="form-group" style="flex:0 0 64px; text-align:center;">
+                  <label>Preview</label>
+                  <div id="preview-soc-logo-${idx}" class="admin-logo-preview-box">
+                    ${s.logo ? `<img src="${s.logo}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">` : `<span style="font-size:10px; color:var(--text-muted);">Default</span>`}
+                  </div>
+                </div>
+              </div>
             </div>
           `).join('')}
         </div>
-        <button class="btn ghost" id="btn-add-soc" style="margin-top:12px;">+ Add Social</button>
+        <button class="btn ghost" id="btn-add-soc" style="margin-top:12px;">+ Add Social Link</button>
 
         <h3 style="margin-top:32px; border-bottom:1px solid #333; padding-bottom:8px;">Education</h3>
         <div id="prof-edu-list">
@@ -275,7 +305,7 @@ function renderEditor() {
       document.getElementById('btn-add-soc').onclick = () => {
         collectFormData();
         if(!siteData.profile.socials) siteData.profile.socials = [];
-        siteData.profile.socials.push({ name: '', url: '' });
+        siteData.profile.socials.push({ name: '', url: '', logo: '' });
         renderEditor();
       };
       document.querySelectorAll('.btn-del-soc').forEach(btn => btn.onclick = (e) => {
@@ -581,26 +611,149 @@ function renderEditor() {
       break;
 
     case 'contact':
+      if (!siteData.contact) siteData.contact = {};
       container.innerHTML = `
-        <div class="form-group"><label>Eyebrow</label><input type="text" id="cnt-eyebrow" value="${esc(siteData.contact.eyebrow)}"></div>
+        <div class="form-group"><label>Eyebrow</label><input type="text" id="cnt-eyebrow" value="${esc(siteData.contact.eyebrow || '')}"></div>
         <div class="form-row">
-          <div class="form-group"><label>Heading (Normal)</label><input type="text" id="cnt-head1" value="${esc(siteData.contact.headingBefore)}"></div>
-          <div class="form-group"><label>Heading (Strong)</label><input type="text" id="cnt-head2" value="${esc(siteData.contact.headingStrong)}"></div>
+          <div class="form-group"><label>Heading (Normal)</label><input type="text" id="cnt-head1" value="${esc(siteData.contact.headingBefore || '')}"></div>
+          <div class="form-group"><label>Heading (Strong)</label><input type="text" id="cnt-head2" value="${esc(siteData.contact.headingStrong || '')}"></div>
         </div>
-        <div class="form-group"><label>Email</label><input type="text" id="cnt-email" value="${esc(siteData.contact.email)}"></div>
-        <div class="form-row">
-          <div class="form-group"><label>Phone Display</label><input type="text" id="cnt-ph-disp" value="${esc(siteData.contact.phoneDisplay)}"></div>
-          <div class="form-group"><label>Phone Link (tel:)</label><input type="text" id="cnt-ph" value="${esc(siteData.contact.phone)}"></div>
+        <div class="form-group"><label>Email</label><input type="text" id="cnt-email" value="${esc(siteData.contact.email || '')}"></div>
+
+        <h3 style="margin-top:32px; border-bottom:1px solid #333; padding-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+          <span>Primary Contact Channels</span>
+          <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">Custom PNG logos are optional</span>
+        </h3>
+
+        <!-- Phone Channel Card -->
+        <div class="item-card" style="margin-top:16px; padding:18px;">
+          <h4 style="font-size:14px; margin-bottom:12px;">Phone Channel</h4>
+          <div class="form-row">
+            <div class="form-group" style="flex:1;"><label>Phone Display Text</label><input type="text" id="cnt-ph-disp" value="${esc(siteData.contact.phoneDisplay || '')}"></div>
+            <div class="form-group" style="flex:1;"><label>Phone Link (tel:)</label><input type="text" id="cnt-ph" value="${esc(siteData.contact.phone || '')}"></div>
+          </div>
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group" style="flex:2;">
+              <label>Optional PNG Logo URL</label>
+              <input type="text" id="cnt-ph-logo" value="${esc(siteData.contact.phoneLogo || '')}" placeholder="Optional: /uploads/... or image URL" oninput="updateLogoPreview('cnt-ph-logo', 'preview-cnt-ph-logo')">
+            </div>
+            <div class="form-group" style="flex:1.2;">
+              <label>Or Upload PNG Logo</label>
+              <input type="file" accept="image/png,image/*" onchange="handleFileUpload(this, 'cnt-ph-logo')">
+            </div>
+            <div class="form-group" style="flex:0 0 64px; text-align:center;">
+              <label>Preview</label>
+              <div id="preview-cnt-ph-logo" class="admin-logo-preview-box">
+                ${siteData.contact.phoneLogo ? `<img src="${siteData.contact.phoneLogo}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">` : `<span style="font-size:10px; color:var(--text-muted);">None</span>`}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>LinkedIn Display</label><input type="text" id="cnt-in-disp" value="${esc(siteData.contact.linkedinDisplay)}"></div>
-          <div class="form-group"><label>LinkedIn URL</label><input type="text" id="cnt-in" value="${esc(siteData.contact.linkedin)}"></div>
+
+        <!-- LinkedIn Channel Card -->
+        <div class="item-card" style="margin-top:16px; padding:18px;">
+          <h4 style="font-size:14px; margin-bottom:12px;">LinkedIn Channel</h4>
+          <div class="form-row">
+            <div class="form-group" style="flex:1;"><label>LinkedIn Display Text</label><input type="text" id="cnt-in-disp" value="${esc(siteData.contact.linkedinDisplay || '')}"></div>
+            <div class="form-group" style="flex:1;"><label>LinkedIn URL</label><input type="text" id="cnt-in" value="${esc(siteData.contact.linkedin || '')}"></div>
+          </div>
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group" style="flex:2;">
+              <label>Optional PNG Logo URL</label>
+              <input type="text" id="cnt-in-logo" value="${esc(siteData.contact.linkedinLogo || '')}" placeholder="Optional: /uploads/... or image URL" oninput="updateLogoPreview('cnt-in-logo', 'preview-cnt-in-logo')">
+            </div>
+            <div class="form-group" style="flex:1.2;">
+              <label>Or Upload PNG Logo</label>
+              <input type="file" accept="image/png,image/*" onchange="handleFileUpload(this, 'cnt-in-logo')">
+            </div>
+            <div class="form-group" style="flex:0 0 64px; text-align:center;">
+              <label>Preview</label>
+              <div id="preview-cnt-in-logo" class="admin-logo-preview-box">
+                ${siteData.contact.linkedinLogo ? `<img src="${siteData.contact.linkedinLogo}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">` : `<span style="font-size:10px; color:var(--text-muted);">None</span>`}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Instagram Display</label><input type="text" id="cnt-ig-disp" value="${esc(siteData.contact.instagramDisplay)}"></div>
-          <div class="form-group"><label>Instagram URL</label><input type="text" id="cnt-ig" value="${esc(siteData.contact.instagram)}"></div>
+
+        <!-- Instagram / Second Social Channel Card -->
+        <div class="item-card" style="margin-top:16px; padding:18px;">
+          <h4 style="font-size:14px; margin-bottom:12px;">Instagram / Secondary Social Channel</h4>
+          <div class="form-row">
+            <div class="form-group" style="flex:1;"><label>Display Text</label><input type="text" id="cnt-ig-disp" value="${esc(siteData.contact.instagramDisplay || '')}"></div>
+            <div class="form-group" style="flex:1;"><label>URL</label><input type="text" id="cnt-ig" value="${esc(siteData.contact.instagram || '')}"></div>
+          </div>
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group" style="flex:2;">
+              <label>Optional PNG Logo URL</label>
+              <input type="text" id="cnt-ig-logo" value="${esc(siteData.contact.instagramLogo || '')}" placeholder="Optional: /uploads/... or image URL" oninput="updateLogoPreview('cnt-ig-logo', 'preview-cnt-ig-logo')">
+            </div>
+            <div class="form-group" style="flex:1.2;">
+              <label>Or Upload PNG Logo</label>
+              <input type="file" accept="image/png,image/*" onchange="handleFileUpload(this, 'cnt-ig-logo')">
+            </div>
+            <div class="form-group" style="flex:0 0 64px; text-align:center;">
+              <label>Preview</label>
+              <div id="preview-cnt-ig-logo" class="admin-logo-preview-box">
+                ${siteData.contact.instagramLogo ? `<img src="${siteData.contact.instagramLogo}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">` : `<span style="font-size:10px; color:var(--text-muted);">None</span>`}
+              </div>
+            </div>
+          </div>
         </div>
+
+        <h3 style="margin-top:32px; border-bottom:1px solid #333; padding-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+          <span>Additional Contact Social Links (Optional)</span>
+          <span style="font-size:12px; font-weight:normal; color:var(--text-muted);">Add any extra platform links</span>
+        </h3>
+        <div id="cnt-socials-list">
+          ${(siteData.contact.socials || []).map((s, idx) => `
+            <div class="item-card cnt-social-row" data-idx="${idx}" style="margin-top:16px; padding:18px;">
+              <div class="card-header" style="margin-bottom:14px; padding-bottom:8px;">
+                <h4 style="font-size:14px; margin:0;">${esc(s.name || `Channel #${idx + 1}`)}</h4>
+                <button class="btn danger btn-del-cnt-soc" data-idx="${idx}" style="padding:6px 14px; font-size:11px;">Delete</button>
+              </div>
+              <div class="form-row">
+                <div class="form-group" style="flex:1;"><label>Platform / Label</label><input type="text" class="cnt-soc-name" value="${esc(s.name || '')}" placeholder="e.g. GitHub, Facebook, WhatsApp"></div>
+                <div class="form-group" style="flex:2;"><label>URL</label><input type="text" class="cnt-soc-url" value="${esc(s.url || '')}" placeholder="https://..."></div>
+              </div>
+              <div class="form-row" style="align-items:flex-end;">
+                <div class="form-group" style="flex:2;">
+                  <label>Optional PNG Logo URL</label>
+                  <input type="text" class="cnt-soc-logo" id="cnt-soc-logo-${idx}" value="${esc(s.logo || '')}" placeholder="Optional: /uploads/... or image URL" oninput="updateLogoPreview('cnt-soc-logo-${idx}', 'preview-cnt-soc-logo-${idx}')">
+                </div>
+                <div class="form-group" style="flex:1.2;">
+                  <label>Or Upload PNG Logo</label>
+                  <input type="file" accept="image/png,image/*" onchange="handleFileUpload(this, 'cnt-soc-logo-${idx}')">
+                </div>
+                <div class="form-group" style="flex:0 0 64px; text-align:center;">
+                  <label>Preview</label>
+                  <div id="preview-cnt-soc-logo-${idx}" class="admin-logo-preview-box">
+                    ${s.logo ? `<img src="${s.logo}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">` : `<span style="font-size:10px; color:var(--text-muted);">None</span>`}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <button class="btn ghost" id="btn-add-cnt-soc" style="margin-top:12px;">+ Add Additional Contact Social</button>
       `;
+
+      // Event listeners for Contact dynamic socials
+      const btnAddCntSoc = document.getElementById('btn-add-cnt-soc');
+      if (btnAddCntSoc) {
+        btnAddCntSoc.onclick = () => {
+          collectFormData();
+          if (!siteData.contact.socials) siteData.contact.socials = [];
+          siteData.contact.socials.push({ name: '', url: '', logo: '' });
+          renderEditor();
+        };
+      }
+      document.querySelectorAll('.btn-del-cnt-soc').forEach(btn => {
+        btn.onclick = (e) => {
+          collectFormData();
+          siteData.contact.socials.splice(e.target.dataset.idx, 1);
+          renderEditor();
+        };
+      });
       break;
 
     case 'footer':
@@ -649,6 +802,7 @@ function collectFormData() {
       if (siteData.profile.socials[idx]) {
         siteData.profile.socials[idx].name = row.querySelector('.soc-name').value;
         siteData.profile.socials[idx].url = row.querySelector('.soc-url').value;
+        siteData.profile.socials[idx].logo = row.querySelector('.soc-logo')?.value || '';
       }
     });
 
@@ -754,10 +908,23 @@ function collectFormData() {
     siteData.contact.email = document.getElementById('cnt-email')?.value || '';
     siteData.contact.phoneDisplay = document.getElementById('cnt-ph-disp')?.value || '';
     siteData.contact.phone = document.getElementById('cnt-ph')?.value || '';
+    siteData.contact.phoneLogo = document.getElementById('cnt-ph-logo')?.value || '';
     siteData.contact.linkedinDisplay = document.getElementById('cnt-in-disp')?.value || '';
     siteData.contact.linkedin = document.getElementById('cnt-in')?.value || '';
+    siteData.contact.linkedinLogo = document.getElementById('cnt-in-logo')?.value || '';
     siteData.contact.instagramDisplay = document.getElementById('cnt-ig-disp')?.value || '';
     siteData.contact.instagram = document.getElementById('cnt-ig')?.value || '';
+    siteData.contact.instagramLogo = document.getElementById('cnt-ig-logo')?.value || '';
+
+    siteData.contact.socials = [];
+    document.querySelectorAll('.cnt-social-row').forEach((row) => {
+      const name = row.querySelector('.cnt-soc-name')?.value || '';
+      const url = row.querySelector('.cnt-soc-url')?.value || '';
+      const logo = row.querySelector('.cnt-soc-logo')?.value || '';
+      if (name || url || logo) {
+        siteData.contact.socials.push({ name, url, logo });
+      }
+    });
   }
   else if (c === 'footer') {
     siteData.footer.copyright = document.getElementById('ft-copy')?.value || '';
@@ -770,14 +937,29 @@ function esc(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function updateLogoPreview(inputId, previewId) {
+  const input = document.getElementById(inputId);
+  const preview = document.getElementById(previewId);
+  if (!input || !preview) return;
+  const val = (input.value || '').trim();
+  if (val) {
+    preview.innerHTML = `<img src="${val}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;" onerror="this.parentElement.innerHTML='<span style=\\'font-size:9px; color:#ff6b6b;\\'>Broken</span>'">`;
+  } else {
+    preview.innerHTML = `<span style="font-size:10px; color:var(--text-muted);">None</span>`;
+  }
+}
+window.updateLogoPreview = updateLogoPreview;
+
 async function handleFileUpload(inputElem, targetInputId) {
   if (!inputElem.files || !inputElem.files[0]) return;
   const file = inputElem.files[0];
   const formData = new FormData();
   formData.append('image', file);
 
-  const prevText = inputElem.previousElementSibling.innerText;
-  inputElem.previousElementSibling.innerText = 'Uploading...';
+  const prevText = inputElem.previousElementSibling ? inputElem.previousElementSibling.innerText : '';
+  if (inputElem.previousElementSibling) {
+    inputElem.previousElementSibling.innerText = 'Uploading...';
+  }
 
   try {
     const res = await fetch('/api/upload', {
@@ -787,7 +969,16 @@ async function handleFileUpload(inputElem, targetInputId) {
     });
     const data = await res.json();
     if (data.success) {
-      document.getElementById(targetInputId).value = data.url;
+      const targetInput = document.getElementById(targetInputId);
+      if (targetInput) {
+        targetInput.value = data.url;
+        targetInput.dispatchEvent(new Event('input', { bubbles: true }));
+        targetInput.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      const previewBox = document.getElementById('preview-' + targetInputId);
+      if (previewBox) {
+        previewBox.innerHTML = `<img src="${data.url}" alt="Logo" style="max-width:28px; max-height:28px; object-fit:contain;">`;
+      }
       showToast('Image uploaded!');
     } else {
       showToast(data.error || 'Upload failed', true);
@@ -795,7 +986,9 @@ async function handleFileUpload(inputElem, targetInputId) {
   } catch (e) {
     showToast('Server error during upload', true);
   } finally {
-    inputElem.previousElementSibling.innerText = prevText;
+    if (inputElem.previousElementSibling) {
+      inputElem.previousElementSibling.innerText = prevText;
+    }
     inputElem.value = ''; // Reset input
   }
 }

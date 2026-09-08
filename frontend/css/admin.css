@@ -279,3 +279,27 @@ label {
   transform: translateY(0);
   opacity: 1;
 }
+
+/* --- Social Logo Previews --- */
+.admin-logo-preview-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+.admin-logo-preview-box:hover {
+  border-color: var(--c-accent);
+}
+.admin-logo-preview-box img {
+  max-width: 30px;
+  max-height: 30px;
+  object-fit: contain;
+}
+
