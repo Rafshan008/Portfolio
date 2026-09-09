@@ -9,7 +9,11 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<<<<<<< HEAD
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+=======
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
 
 <!-- GSAP + ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -20,7 +24,11 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="css/main.css?v=32">
+<<<<<<< HEAD
 <link rel="stylesheet" href="css/gallery.css?v=7">
+=======
+<link rel="stylesheet" href="css/gallery.css?v=3">
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
 </head>
 <body class="gallery-page">
 
@@ -45,10 +53,13 @@
       <li><a href="about.html" class="nav-about-btn">About</a></li>
     </ul>
     <div class="nav-right">
+<<<<<<< HEAD
       <button class="ambience-toggle-btn" id="ambienceToggle" aria-label="Toggle Exhibition Ambience" title="Switch Exhibition Ambience">
         <span id="ambienceIcon">✦</span>
         <span id="ambienceLabel">Pavilion Dark</span>
       </button>
+=======
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
       <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
       <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu">
         <span></span>
@@ -86,6 +97,7 @@
 <!-- Main Gallery Container -->
 <main class="gallery-main">
 
+<<<<<<< HEAD
   <!-- Gallery Hero Section (Luxury Fine Art Marquee) -->
   <section class="gallery-hero">
     <div class="gallery-hero-inner">
@@ -144,10 +156,31 @@
             <span class="tour-label">Curated Tour</span>
           </button>
         </div>
+=======
+  <!-- Gallery Hero Section -->
+  <section class="gallery-hero">
+    <span class="gallery-eyebrow">LUMIÈRE ARCHIVE // 3D EXHIBITION</span>
+    <h1 class="exhibition-title">ONLINE GALLERY</h1>
+    <p class="exhibition-sub">
+      A minimal three-dimensional study of geometry, street cadence, and found natural light.<br class="hidden sm:inline">
+      Interact with the 3D frames below or explore the complete visual archive.
+    </p>
+
+    <!-- Controls Bar (Category Filters & View Toggles) -->
+    <div class="gallery-controls-bar">
+      <div class="gallery-filters" id="gallery-filters">
+        <!-- Dynamically injected category filters -->
+      </div>
+      <div class="g-view-toggle">
+        <button class="g-toggle-btn active" data-view="both">All Views</button>
+        <button class="g-toggle-btn" data-view="stage">3D Stage</button>
+        <button class="g-toggle-btn" data-view="grid">Archive Grid</button>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
       </div>
     </div>
   </section>
 
+<<<<<<< HEAD
   <!-- 3D Exhibition Stage Section (Volumetric Spotlight Pavilion) -->
   <section class="exhibition-section" id="exhibition-stage-section">
     <!-- Volumetric Overhead Spotlight Beam -->
@@ -187,6 +220,25 @@
         <div class="stage-progress-bar" id="stage-progress-bar"></div>
       </div>
       <div class="stage-dots" id="stage-dots"></div>
+=======
+  <!-- 3D Exhibition Stage Section -->
+  <section class="exhibition-section" id="exhibition-stage-section">
+    <div class="exhibition-stage-wrap">
+      <!-- Nav Arrows -->
+      <button class="stage-arrow prev" id="stage-prev" aria-label="Previous Artwork" title="Previous (ArrowLeft)">❮</button>
+      <button class="stage-arrow next" id="stage-next" aria-label="Next Artwork" title="Next (ArrowRight)">❯</button>
+
+      <!-- 3D Stage Stage Injector -->
+      <div class="exhibition-stage" id="gallery-stage">
+        <!-- Dynamically rendered 3-frame perspective stage -->
+      </div>
+    </div>
+
+    <!-- Stage Indicators -->
+    <div class="stage-indicator">
+      <div class="stage-dots" id="stage-dots"></div>
+      <span id="stage-counter">01 / 06</span>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
     </div>
   </section>
 
@@ -198,16 +250,24 @@
         <span class="gold-gem">✧ ✦ ✧</span>
         <span class="gold-line"></span>
       </div>
+<<<<<<< HEAD
       <span class="archive-eyebrow">PERMANENT MONOGRAPH ARCHIVE & PRINT INVENTORY</span>
       <h2 class="archive-title">THE FOLIO CATALOGUE</h2>
       <p class="archive-subtitle">
         An exhaustive curated inventory of fine art master plates and documentary visual monographs. Every edition is calibrated for archival reproduction, immortalizing transient human cadence and architectural atmosphere across Bengal and beyond.
+=======
+      <span class="archive-eyebrow">FINE ART CATALOGUE & PERMANENT ARCHIVE</span>
+      <h2 class="archive-title">THE ARCHIVE COLLECTION</h2>
+      <p class="archive-subtitle">
+        Curated 35mm captures, photographic studies, and commissioned visual works. Each frame is calibrated for exhibition print reproduction, capturing transient atmosphere, architecture, and human emotion across Bangladesh and beyond.
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
       </p>
 
       <!-- Luxury Archive Stats Ribbon -->
       <div class="archive-stats-ribbon">
         <div class="stat-pill">
           <span class="stat-label">CATALOGUE</span>
+<<<<<<< HEAD
           <span class="stat-val" id="archive-count">07 PLATES</span>
         </div>
         <div class="stat-divider">✦</div>
@@ -219,26 +279,52 @@
         <div class="stat-pill">
           <span class="stat-label">EDITION</span>
           <span class="stat-val">LIMITED ARCHIVAL FOLIO</span>
+=======
+          <span class="stat-val" id="archive-count">12 EDITIONS</span>
+        </div>
+        <div class="stat-divider">✦</div>
+        <div class="stat-pill">
+          <span class="stat-label">FORMAT</span>
+          <span class="stat-val">35mm RAW & FILM</span>
+        </div>
+        <div class="stat-divider">✦</div>
+        <div class="stat-pill">
+          <span class="stat-label">PRINTS</span>
+          <span class="stat-val">FINE ART ARCHIVAL</span>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
         </div>
         <div class="stat-divider">✦</div>
         <div class="stat-pill">
           <span class="stat-label">STATUS</span>
+<<<<<<< HEAD
           <span class="stat-val"><span class="status-dot"></span> ACTIVE RETROSPECTIVE</span>
+=======
+          <span class="stat-val"><span class="status-dot"></span> CURATED & ACTIVE</span>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
         </div>
       </div>
 
       <!-- Archive Controls Toolbar (Search & Layout Modes) -->
       <div class="archive-toolbar">
         <div class="archive-search-box">
+<<<<<<< HEAD
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
           <input type="text" id="archive-search" placeholder="Search by title, location, series, or medium..." autocomplete="off" spellcheck="false">
+=======
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="archive-search" placeholder="Filter by title, location, genre, or camera setting..." autocomplete="off" spellcheck="false">
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
           <button id="archive-search-clear" class="search-clear-btn" aria-label="Clear Search" style="display:none;">&times;</button>
         </div>
 
         <div class="archive-layout-toggles">
+<<<<<<< HEAD
           <span class="layout-label">FOLIO VIEW:</span>
           <button class="layout-toggle-btn active" data-layout="editorial" title="Editorial Folio Layout">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
@@ -251,6 +337,20 @@
           <button class="layout-toggle-btn" data-layout="panoramic" title="Panoramic Cinema Cards">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v7H3V4zm0 9h18v7H3v-7z"/></svg>
             <span>Cinema</span>
+=======
+          <span class="layout-label">LAYOUT:</span>
+          <button class="layout-toggle-btn active" data-layout="editorial" title="Editorial Magazine Layout">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
+            <span>Editorial</span>
+          </button>
+          <button class="layout-toggle-btn" data-layout="grid" title="Standard Matrix Grid">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+            <span>Matrix</span>
+          </button>
+          <button class="layout-toggle-btn" data-layout="panoramic" title="Panoramic Wide Cards">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v7H3V4zm0 9h18v7H3v-7z"/></svg>
+            <span>Wide</span>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
           </button>
         </div>
       </div>
@@ -268,32 +368,52 @@
 <div class="gallery-lightbox" id="gallery-lightbox">
   <button class="gallery-lb-close" onclick="window.closeGalleryLightbox()" aria-label="Close Lightbox">&times;</button>
   
+<<<<<<< HEAD
   <button class="gallery-lb-nav prev" onclick="window.navigateGalleryLightbox(-1)" aria-label="Previous plate">❮</button>
   <button class="gallery-lb-nav next" onclick="window.navigateGalleryLightbox(1)" aria-label="Next plate">❯</button>
+=======
+  <button class="gallery-lb-nav prev" onclick="window.navigateGalleryLightbox(-1)" aria-label="Previous image">❮</button>
+  <button class="gallery-lb-nav next" onclick="window.navigateGalleryLightbox(1)" aria-label="Next image">❯</button>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
 
   <div class="gallery-lb-content">
     <div class="gallery-lb-frame">
       <img id="lb-img" src="" alt="Exhibition Art">
     </div>
     <div class="gallery-lb-details">
+<<<<<<< HEAD
       <div id="lb-plate-tag" class="gallery-lb-plate-tag"></div>
       <h3 id="lb-title" class="gallery-lb-title"></h3>
       <p id="lb-narrative" class="gallery-lb-narrative"></p>
       <div id="lb-meta" class="gallery-lb-meta"></div>
+=======
+      <h3 id="lb-title" class="gallery-lb-title"></h3>
+      <p id="lb-artist" class="gallery-lb-meta"></p>
+      <p id="lb-meta" style="font-family:var(--mono); font-size:11px; color:rgba(236,232,226,0.5); margin-top:4px;"></p>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
     </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer class="bg-forest" style="position:relative; z-index:10; border-top:1px solid rgba(163,159,114,0.15);">
+<<<<<<< HEAD
   <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:auto; padding:32px 28px; font-family:'Montserrat',sans-serif; font-size:11.5px; color:rgba(236,232,226,0.6);">
     <span id="footer-copy">© 2026 Rafshan Ekhowan. All rights reserved. Fine Art Photography Retrospective.</span>
+=======
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:auto; padding:32px 28px; font-family:var(--mono); font-size:11.5px; color:rgba(236,232,226,0.6);">
+    <span id="footer-copy">© 2026 Rafshan Ekhowan. All rights reserved.</span>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
     <span id="footer-loc">Dhaka, Bangladesh</span>
   </div>
 </footer>
 
 <!-- Scripts -->
 <script src="js/main.js?v=22"></script>
+<<<<<<< HEAD
 <script src="js/gallery.js?v=7"></script>
+=======
+<script src="js/gallery.js?v=3"></script>
+>>>>>>> 89e3c1dd93c57fc79979d38968029bf34d58fcba
 </body>
 </html>
