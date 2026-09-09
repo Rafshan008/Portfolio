@@ -9,7 +9,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <!-- GSAP + ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -20,7 +20,7 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="css/main.css?v=32">
-<link rel="stylesheet" href="css/gallery.css?v=3">
+<link rel="stylesheet" href="css/gallery.css?v=7">
 </head>
 <body class="gallery-page">
 
@@ -45,6 +45,10 @@
       <li><a href="about.html" class="nav-about-btn">About</a></li>
     </ul>
     <div class="nav-right">
+      <button class="ambience-toggle-btn" id="ambienceToggle" aria-label="Toggle Exhibition Ambience" title="Switch Exhibition Ambience">
+        <span id="ambienceIcon">✦</span>
+        <span id="ambienceLabel">Pavilion Dark</span>
+      </button>
       <div class="nav-status"><span class="dot"></span><span id="clock">--:--:-- DHK</span></div>
       <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu">
         <span></span>
@@ -82,45 +86,107 @@
 <!-- Main Gallery Container -->
 <main class="gallery-main">
 
-  <!-- Gallery Hero Section -->
+  <!-- Gallery Hero Section (Luxury Fine Art Marquee) -->
   <section class="gallery-hero">
-    <span class="gallery-eyebrow">LUMIÈRE ARCHIVE // 3D EXHIBITION</span>
-    <h1 class="exhibition-title">ONLINE GALLERY</h1>
-    <p class="exhibition-sub">
-      A minimal three-dimensional study of geometry, street cadence, and found natural light.<br class="hidden sm:inline">
-      Interact with the 3D frames below or explore the complete visual archive.
-    </p>
-
-    <!-- Controls Bar (Category Filters & View Toggles) -->
-    <div class="gallery-controls-bar">
-      <div class="gallery-filters" id="gallery-filters">
-        <!-- Dynamically injected category filters -->
+    <div class="gallery-hero-inner">
+      <div class="gallery-hero-badge">
+        <span class="badge-gem">✧</span>
+        <span>RAFSHAN EKHOWAN · FINE ART PHOTOGRAPHY RETROSPECTIVE</span>
+        <span class="badge-gem">✧</span>
       </div>
-      <div class="g-view-toggle">
-        <button class="g-toggle-btn active" data-view="both">All Views</button>
-        <button class="g-toggle-btn" data-view="stage">3D Stage</button>
-        <button class="g-toggle-btn" data-view="grid">Archive Grid</button>
+      
+      <h1 class="exhibition-title">
+        <span class="title-eyebrow">A Visual Retrospective in 35 Millimeters</span>
+        <span class="title-main">TRANSIENT CADENCE</span>
+        <span class="title-italic">Atmosphere, Light & Bengal Solitude</span>
+      </h1>
+      
+      <p class="exhibition-sub">
+        An intimate three-dimensional retrospective capturing architectural stillness, maritime industry, and human presence across Old Dhaka, Buriganga riverways, and remote frontiers. Each photograph is captured on prime optical glass and calibrated for museum-grade cotton rag reproduction.
+      </p>
+
+      <!-- Curator's Provenance Ribbon -->
+      <div class="hero-curator-ribbon">
+        <div class="h-curator-item">
+          <span class="h-curator-num" id="hero-total-count">07</span>
+          <span class="h-curator-desc">Master Plates</span>
+        </div>
+        <span class="h-curator-sep">✦</span>
+        <div class="h-curator-item">
+          <span class="h-curator-num">35mm</span>
+          <span class="h-curator-desc">Prime Optics</span>
+        </div>
+        <span class="h-curator-sep">✦</span>
+        <div class="h-curator-item">
+          <span class="h-curator-num">Dhaka</span>
+          <span class="h-curator-desc">Studio Monograph</span>
+        </div>
+        <span class="h-curator-sep">✦</span>
+        <div class="h-curator-item">
+          <span class="h-curator-num">Rag</span>
+          <span class="h-curator-desc">Archival Pigment</span>
+        </div>
+      </div>
+
+      <!-- Controls Bar (Category Filters & View Toggles & Curated Tour) -->
+      <div class="gallery-controls-bar">
+        <div class="gallery-filters" id="gallery-filters">
+          <!-- Dynamically injected category filters with counts -->
+        </div>
+        <div class="gallery-extra-controls">
+          <div class="g-view-toggle">
+            <button class="g-toggle-btn active" data-view="both">All Views</button>
+            <button class="g-toggle-btn" data-view="stage">3D Stage</button>
+            <button class="g-toggle-btn" data-view="grid">Catalogue</button>
+          </div>
+          <button class="g-tour-btn" id="galleryTourBtn" aria-label="Start Curated Slideshow Tour" title="Start Automated Curated Tour">
+            <span class="tour-icon">▶</span>
+            <span class="tour-label">Curated Tour</span>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 3D Exhibition Stage Section -->
+  <!-- 3D Exhibition Stage Section (Volumetric Spotlight Pavilion) -->
   <section class="exhibition-section" id="exhibition-stage-section">
-    <div class="exhibition-stage-wrap">
-      <!-- Nav Arrows -->
-      <button class="stage-arrow prev" id="stage-prev" aria-label="Previous Artwork" title="Previous (ArrowLeft)">❮</button>
-      <button class="stage-arrow next" id="stage-next" aria-label="Next Artwork" title="Next (ArrowRight)">❯</button>
+    <!-- Volumetric Overhead Spotlight Beam -->
+    <div class="stage-spotlight-beam"></div>
 
-      <!-- 3D Stage Stage Injector -->
+    <div class="exhibition-stage-wrap" id="stageDragWrap">
+      <!-- Circular Luxury Navigation Pedals -->
+      <button class="stage-nav-arrow prev" id="stage-prev" aria-label="Previous Plate" title="Previous Plate (ArrowLeft)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <button class="stage-nav-arrow next" id="stage-next" aria-label="Next Plate" title="Next Plate (ArrowRight)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- 3D Stage Injector -->
       <div class="exhibition-stage" id="gallery-stage">
-        <!-- Dynamically rendered 3-frame perspective stage -->
+        <!-- Dynamically rendered 3D perspective stage -->
       </div>
+
+      <!-- Gallery Floor Reflection Plane -->
+      <div class="stage-floor-reflection"></div>
     </div>
 
-    <!-- Stage Indicators -->
-    <div class="stage-indicator">
+    <!-- Museum Wall Placard (Curatorial Narrative) -->
+    <div class="stage-placard-wrap" id="stage-placard-wrap">
+      <!-- Injected via gallery.js -->
+    </div>
+
+    <!-- Stage Progress Timeline -->
+    <div class="stage-indicator-wrap">
+      <div class="stage-roman-row">
+        <span class="stage-roman" id="stage-roman">PLATE I OF VII</span>
+        <span class="stage-drag-hint">✧ DRAG OR SWIPE ↔ TO NAVIGATE ✧</span>
+      </div>
+      <div class="stage-progress-track">
+        <div class="stage-progress-bar" id="stage-progress-bar"></div>
+      </div>
       <div class="stage-dots" id="stage-dots"></div>
-      <span id="stage-counter">01 / 06</span>
     </div>
   </section>
 
@@ -132,59 +198,59 @@
         <span class="gold-gem">✧ ✦ ✧</span>
         <span class="gold-line"></span>
       </div>
-      <span class="archive-eyebrow">FINE ART CATALOGUE & PERMANENT ARCHIVE</span>
-      <h2 class="archive-title">THE ARCHIVE COLLECTION</h2>
+      <span class="archive-eyebrow">PERMANENT MONOGRAPH ARCHIVE & PRINT INVENTORY</span>
+      <h2 class="archive-title">THE FOLIO CATALOGUE</h2>
       <p class="archive-subtitle">
-        Curated 35mm captures, photographic studies, and commissioned visual works. Each frame is calibrated for exhibition print reproduction, capturing transient atmosphere, architecture, and human emotion across Bangladesh and beyond.
+        An exhaustive curated inventory of fine art master plates and documentary visual monographs. Every edition is calibrated for archival reproduction, immortalizing transient human cadence and architectural atmosphere across Bengal and beyond.
       </p>
 
       <!-- Luxury Archive Stats Ribbon -->
       <div class="archive-stats-ribbon">
         <div class="stat-pill">
           <span class="stat-label">CATALOGUE</span>
-          <span class="stat-val" id="archive-count">12 EDITIONS</span>
+          <span class="stat-val" id="archive-count">07 PLATES</span>
         </div>
         <div class="stat-divider">✦</div>
         <div class="stat-pill">
-          <span class="stat-label">FORMAT</span>
-          <span class="stat-val">35mm RAW & FILM</span>
+          <span class="stat-label">MEDIUM</span>
+          <span class="stat-val">35mm RAW & SILVER HALIDE</span>
         </div>
         <div class="stat-divider">✦</div>
         <div class="stat-pill">
-          <span class="stat-label">PRINTS</span>
-          <span class="stat-val">FINE ART ARCHIVAL</span>
+          <span class="stat-label">EDITION</span>
+          <span class="stat-val">LIMITED ARCHIVAL FOLIO</span>
         </div>
         <div class="stat-divider">✦</div>
         <div class="stat-pill">
           <span class="stat-label">STATUS</span>
-          <span class="stat-val"><span class="status-dot"></span> CURATED & ACTIVE</span>
+          <span class="stat-val"><span class="status-dot"></span> ACTIVE RETROSPECTIVE</span>
         </div>
       </div>
 
       <!-- Archive Controls Toolbar (Search & Layout Modes) -->
       <div class="archive-toolbar">
         <div class="archive-search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
-          <input type="text" id="archive-search" placeholder="Filter by title, location, genre, or camera setting..." autocomplete="off" spellcheck="false">
+          <input type="text" id="archive-search" placeholder="Search by title, location, series, or medium..." autocomplete="off" spellcheck="false">
           <button id="archive-search-clear" class="search-clear-btn" aria-label="Clear Search" style="display:none;">&times;</button>
         </div>
 
         <div class="archive-layout-toggles">
-          <span class="layout-label">LAYOUT:</span>
-          <button class="layout-toggle-btn active" data-layout="editorial" title="Editorial Magazine Layout">
+          <span class="layout-label">FOLIO VIEW:</span>
+          <button class="layout-toggle-btn active" data-layout="editorial" title="Editorial Folio Layout">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
-            <span>Editorial</span>
+            <span>Folio</span>
           </button>
-          <button class="layout-toggle-btn" data-layout="grid" title="Standard Matrix Grid">
+          <button class="layout-toggle-btn" data-layout="grid" title="Standard Gallery Matrix">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
             <span>Matrix</span>
           </button>
-          <button class="layout-toggle-btn" data-layout="panoramic" title="Panoramic Wide Cards">
+          <button class="layout-toggle-btn" data-layout="panoramic" title="Panoramic Cinema Cards">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v7H3V4zm0 9h18v7H3v-7z"/></svg>
-            <span>Wide</span>
+            <span>Cinema</span>
           </button>
         </div>
       </div>
@@ -202,31 +268,32 @@
 <div class="gallery-lightbox" id="gallery-lightbox">
   <button class="gallery-lb-close" onclick="window.closeGalleryLightbox()" aria-label="Close Lightbox">&times;</button>
   
-  <button class="gallery-lb-nav prev" onclick="window.navigateGalleryLightbox(-1)" aria-label="Previous image">❮</button>
-  <button class="gallery-lb-nav next" onclick="window.navigateGalleryLightbox(1)" aria-label="Next image">❯</button>
+  <button class="gallery-lb-nav prev" onclick="window.navigateGalleryLightbox(-1)" aria-label="Previous plate">❮</button>
+  <button class="gallery-lb-nav next" onclick="window.navigateGalleryLightbox(1)" aria-label="Next plate">❯</button>
 
   <div class="gallery-lb-content">
     <div class="gallery-lb-frame">
       <img id="lb-img" src="" alt="Exhibition Art">
     </div>
     <div class="gallery-lb-details">
+      <div id="lb-plate-tag" class="gallery-lb-plate-tag"></div>
       <h3 id="lb-title" class="gallery-lb-title"></h3>
-      <p id="lb-artist" class="gallery-lb-meta"></p>
-      <p id="lb-meta" style="font-family:var(--mono); font-size:11px; color:rgba(236,232,226,0.5); margin-top:4px;"></p>
+      <p id="lb-narrative" class="gallery-lb-narrative"></p>
+      <div id="lb-meta" class="gallery-lb-meta"></div>
     </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer class="bg-forest" style="position:relative; z-index:10; border-top:1px solid rgba(163,159,114,0.15);">
-  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:auto; padding:32px 28px; font-family:var(--mono); font-size:11.5px; color:rgba(236,232,226,0.6);">
-    <span id="footer-copy">© 2026 Rafshan Ekhowan. All rights reserved.</span>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:auto; padding:32px 28px; font-family:'Montserrat',sans-serif; font-size:11.5px; color:rgba(236,232,226,0.6);">
+    <span id="footer-copy">© 2026 Rafshan Ekhowan. All rights reserved. Fine Art Photography Retrospective.</span>
     <span id="footer-loc">Dhaka, Bangladesh</span>
   </div>
 </footer>
 
 <!-- Scripts -->
 <script src="js/main.js?v=22"></script>
-<script src="js/gallery.js?v=3"></script>
+<script src="js/gallery.js?v=7"></script>
 </body>
 </html>
