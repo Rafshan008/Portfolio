@@ -167,7 +167,6 @@
       heroTotalCount.textContent = String(allArtworks.length).padStart(2, '0');
     }
 
-    initAmbience();
     buildCategoryFilters();
     renderStage();
     renderArchiveGrid();
@@ -197,28 +196,6 @@
       str += i.repeat(q);
     }
     return str;
-  }
-
-  // --- Ambience Theme Toggle (Dark Pavilion / Light Salon) ---
-  function initAmbience() {
-    const saved = localStorage.getItem('gallery-ambience') || 'dark';
-    applyAmbience(saved);
-  }
-
-  function applyAmbience(mode) {
-    const iconEl = document.getElementById('ambienceIcon');
-    const labelEl = document.getElementById('ambienceLabel');
-
-    if (mode === 'light') {
-      document.body.classList.add('theme-light-salon');
-      if (iconEl) iconEl.textContent = '✧';
-      if (labelEl) labelEl.textContent = 'Light Salon';
-    } else {
-      document.body.classList.remove('theme-light-salon');
-      if (iconEl) iconEl.textContent = '✦';
-      if (labelEl) labelEl.textContent = 'Dark Pavilion';
-    }
-    localStorage.setItem('gallery-ambience', mode);
   }
 
   // --- Dynamic Category Filters with Counts ---
@@ -275,42 +252,66 @@
   // --- Render 3D Continuous Carousel Stage ---
   function renderStage() {
     if (!stage) return;
-    stage.innerHTML = '';
 
-    if (filteredArtworks.length === 0) {
-      stage.innerHTML = `
-        <div style="text-align:center; padding:60px 20px; color:var(--g-text-muted); font-family:'Cinzel',serif;">
-          <div style="font-size:32px; margin-bottom:12px; color:var(--g-gold);">✧</div>
-          <p style="letter-spacing:0.16em; text-transform:uppercase; font-size:14px;">No Plates in this curatorial series.</p>
-        </div>
-      `;
-      if (stageRoman) stageRoman.textContent = 'PLATE 00 OF 00';
-      if (stageProgressBar) stageProgressBar.style.width = '0%';
-      if (stageDots) stageDots.innerHTML = '';
-      if (stagePlacardWrap) stagePlacardWrap.innerHTML = '';
-      return;
+    let track = document.getElementById('stageTrack');
+
+    // If no track or filtered items changed significantly, rebuild the DOM
+    if (!track || track.childElementCount !== filteredArtworks.length) {
+      stage.innerHTML = '';
+      if (filteredArtworks.length === 0) {
+        stage.innerHTML = `
+          <div style="text-align:center; padding:60px 20px; color:var(--g-text-muted); font-family:'Cinzel',serif;">
+            <div style="font-size:32px; margin-bottom:12px; color:var(--g-gold);">✧</div>
+            <p style="letter-spacing:0.16em; text-transform:uppercase; font-size:14px;">No Plates in this curatorial series.</p>
+          </div>
+        `;
+        if (stageRoman) stageRoman.textContent = 'PLATE 00 OF 00';
+        if (stageProgressBar) stageProgressBar.style.width = '0%';
+        if (stageDots) stageDots.innerHTML = '';
+        if (stagePlacardWrap) stagePlacardWrap.innerHTML = '';
+        return;
+      }
+
+      track = document.createElement('div');
+      track.className = 'stage-carousel-track';
+      track.id = 'stageTrack';
+      
+      filteredArtworks.forEach((art, idx) => {
+        const item = document.createElement('div');
+        item.className = 'stage-card';
+        item.setAttribute('data-idx', idx);
+        
+        item.innerHTML = `
+          <div class="stage-frame">
+            <div class="stage-matting">
+              <div class="stage-img-box">
+                <img src="${art.url}" alt="${art.title}" loading="lazy">
+                <div class="stage-glass-glare"></div>
+                <div class="stage-loupe-badge" title="Click to view full exhibition print">
+                  <span class="loupe-icon">⚲</span>
+                  <span>Examine Plate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        track.appendChild(item);
+      });
+      stage.appendChild(track);
     }
 
+    // Now update existing DOM nodes to animate smoothly
     const total = filteredArtworks.length;
+    const cards = track.querySelectorAll('.stage-card');
 
-    // Create 3D stage track
-    const track = document.createElement('div');
-    track.className = 'stage-carousel-track';
-    track.id = 'stageTrack';
-
-    filteredArtworks.forEach((art, idx) => {
-      const item = document.createElement('div');
-      item.className = 'stage-card';
-      item.setAttribute('data-idx', idx);
-
-      // Positioning classes
+    cards.forEach((item, idx) => {
       let offset = idx - currentIndex;
-      // Wrap around for circular loop feel
       if (offset < -Math.floor(total / 2)) offset += total;
       if (offset > Math.floor(total / 2)) offset -= total;
-
+      
       item.setAttribute('data-offset', offset);
-
+      item.classList.remove('center', 'side-prev', 'side-next', 'far-hidden');
+      
       if (offset === 0) {
         item.classList.add('center');
       } else if (offset === -1) {
@@ -321,43 +322,22 @@
         item.classList.add('far-hidden');
       }
 
-      item.innerHTML = `
-        <div class="stage-frame">
-          <div class="stage-matting">
-            <div class="stage-img-box">
-              <img src="${art.url}" alt="${art.title}" loading="lazy">
-              <div class="stage-glass-glare"></div>
-              ${offset === 0 ? `
-                <div class="stage-loupe-badge" title="Click to view full exhibition print">
-                  <span class="loupe-icon">⤢</span>
-                  <span>Examine Plate</span>
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        </div>
-      `;
+      const loupe = item.querySelector('.stage-loupe-badge');
+      if (loupe) {
+        loupe.style.display = (offset === 0) ? 'flex' : 'none';
+      }
 
       item.onclick = () => {
         if (offset === 0) {
-          openLightbox(art);
+          openLightbox(filteredArtworks[idx]);
         } else {
           setGalleryIndex(idx);
         }
       };
-
-      track.appendChild(item);
     });
 
-    stage.appendChild(track);
-
-    // Update Museum Placard Beneath Stage
     updateMuseumPlacard();
-
-    // Update Roman Progress Bar
     updateStageProgress();
-
-    // Attach Mouse Tilt to Center Card
     attachStageTilt();
   }
 
@@ -792,15 +772,6 @@
         searchQuery = '';
         clearBtn.style.display = 'none';
         renderArchiveGrid();
-      });
-    }
-
-    // Ambience Switcher Button
-    const ambToggle = document.getElementById('ambienceToggle');
-    if (ambToggle) {
-      ambToggle.addEventListener('click', () => {
-        const isLight = document.body.classList.contains('theme-light-salon');
-        applyAmbience(isLight ? 'dark' : 'light');
       });
     }
 

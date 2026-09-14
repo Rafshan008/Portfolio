@@ -11,31 +11,6 @@
    ========================================================================== */
 
 :root {
-  --g-bg: #090E0B;               /* Deep Velvet Obsidian */
-  --g-bg-card: rgba(16, 24, 18, 0.75);
-  --g-surface: #121A14;
-  --g-text-main: #FFFFFF;
-  --g-text-sub: rgba(236, 232, 226, 0.82);
-  --g-text-muted: rgba(236, 232, 226, 0.48);
-  --g-gold: #D4AF37;             /* Antique Champagne Gold */
-  --g-champagne: #DCD7B5;
-  --g-sage: #A39F72;
-  --g-moss: #5D6340;
-  --g-fern: #26362B;
-  --g-ivory: #ECE8E2;
-  --g-border: rgba(163, 159, 114, 0.22);
-  --g-border-hover: rgba(212, 175, 55, 0.7);
-  --g-spotlight-glow: rgba(163, 159, 114, 0.24);
-  --g-shadow-artwork: 0 35px 85px rgba(0, 0, 0, 0.85), 0 10px 30px rgba(0, 0, 0, 0.5);
-  --g-shadow-center: 0 45px 110px rgba(0, 0, 0, 0.95), 0 0 50px rgba(163, 159, 114, 0.3);
-  --serif: 'Cinzel', Georgia, serif;
-  --italic-serif: 'Cormorant Garamond', Georgia, serif;
-  --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
-}
-
-/* Light Salon Ambience Mode (Gallery Plaster & Natural Linen) */
-body.theme-light-salon {
   --g-bg: #F5F2EB;              /* Curated Gallery Plaster / Natural Ivory */
   --g-bg-card: rgba(255, 255, 255, 0.9);
   --g-surface: #FFFFFF;
@@ -45,11 +20,17 @@ body.theme-light-salon {
   --g-gold: #7A6836;             /* Warm Antique Bronze */
   --g-champagne: #5D6340;
   --g-sage: #4E5943;
+  --g-fern: #26362B;
+  --g-ivory: #ECE8E2;
   --g-border: rgba(38, 54, 43, 0.14);
   --g-border-hover: #1C2720;
   --g-spotlight-glow: rgba(93, 99, 64, 0.12);
   --g-shadow-artwork: 0 24px 50px rgba(28, 39, 32, 0.14), 0 6px 15px rgba(0, 0, 0, 0.04);
   --g-shadow-center: 0 35px 80px rgba(28, 39, 32, 0.22), 0 0 40px rgba(93, 99, 64, 0.16);
+  --serif: 'Cinzel', Georgia, serif;
+  --italic-serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
 }
 
 /* Base Page Setup */
@@ -60,7 +41,6 @@ body.theme-light-salon {
   position: relative;
   overflow-x: hidden;
   font-family: var(--sans);
-  transition: background-color 0.4s ease, color 0.4s ease;
   background-image: 
     radial-gradient(circle at 50% -10%, var(--g-spotlight-glow) 0%, transparent 65%),
     radial-gradient(circle at 10% 40%, rgba(163, 159, 114, 0.04) 0%, transparent 40%),
@@ -72,16 +52,10 @@ body.theme-light-salon {
   inset: 0;
   pointer-events: none;
   background-image: 
-    linear-gradient(to right, rgba(163, 159, 114, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(163, 159, 114, 0.025) 1px, transparent 1px);
-  background-size: 80px 80px;
-  z-index: 0;
-}
-
-body.theme-light-salon .gallery-bg-lines {
-  background-image: 
     linear-gradient(to right, rgba(38, 54, 43, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(38, 54, 43, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
 }
 
 /* ==========================================================================
@@ -114,7 +88,7 @@ body.theme-light-salon .gallery-bg-lines {
   transition: all 0.3s ease;
 }
 
-body.theme-light-salon .nav-container {
+body .nav-container {
   background: rgba(255, 255, 255, 0.92);
   border-color: rgba(38, 54, 43, 0.16);
   box-shadow: 0 10px 30px rgba(28, 39, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -207,16 +181,17 @@ body.theme-light-salon .nav-container {
 .ambience-toggle-btn:hover {
   border-color: var(--g-gold);
   color: var(--g-gold);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg);
 }
 
-body.theme-light-salon .ambience-toggle-btn {
+body .ambience-toggle-btn {
   background: rgba(38, 54, 43, 0.06);
   border-color: rgba(38, 54, 43, 0.18);
   color: #1C2720;
 }
 
-body.theme-light-salon .ambience-toggle-btn:hover {
+body .ambience-toggle-btn:hover {
   border-color: #1C2720;
   color: #1C2720;
   background: rgba(38, 54, 43, 0.12);
@@ -235,7 +210,7 @@ body.theme-light-salon .ambience-toggle-btn:hover {
   border-radius: 999px;
 }
 
-body.theme-light-salon .nav-status {
+body .nav-status {
   background: rgba(38, 54, 43, 0.06);
   color: #495544;
 }
@@ -273,16 +248,16 @@ body.theme-light-salon .nav-status {
   box-shadow: 0 0 16px rgba(212, 175, 55, 0.5);
 }
 
-body.theme-light-salon #siteHeader .nav-links .nav-about-btn,
-body.theme-light-salon .nav-links .nav-about-btn {
+body #siteHeader .nav-links .nav-about-btn,
+body .nav-links .nav-about-btn {
   background: #1C2720 !important;
   color: #FAF8F5 !important;
   border: 1px solid #1C2720 !important;
   box-shadow: 0 2px 10px rgba(28, 39, 32, 0.15);
 }
 
-body.theme-light-salon #siteHeader .nav-links .nav-about-btn:hover,
-body.theme-light-salon .nav-links .nav-about-btn:hover {
+body #siteHeader .nav-links .nav-about-btn:hover,
+body .nav-links .nav-about-btn:hover {
   background: #4E5943 !important;
   color: #FAF8F5 !important;
   border-color: #4E5943 !important;
@@ -418,7 +393,7 @@ body.theme-light-salon .nav-links .nav-about-btn:hover {
   backdrop-filter: blur(10px);
 }
 
-body.theme-light-salon .gallery-hero-badge {
+body .gallery-hero-badge {
   background: rgba(122, 104, 54, 0.08);
   border-color: rgba(122, 104, 54, 0.25);
   color: var(--g-gold);
@@ -461,7 +436,7 @@ body.theme-light-salon .gallery-hero-badge {
   margin-top: 6px;
 }
 
-body.theme-light-salon .exhibition-title .title-italic {
+body .exhibition-title .title-italic {
   color: #4E5943;
 }
 
@@ -493,7 +468,7 @@ body.theme-light-salon .exhibition-title .title-italic {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
-body.theme-light-salon .hero-curator-ribbon {
+body .hero-curator-ribbon {
   box-shadow: 0 8px 30px rgba(28, 39, 32, 0.06);
 }
 
@@ -502,6 +477,20 @@ body.theme-light-salon .hero-curator-ribbon {
   align-items: center;
   gap: 9px;
   font-family: var(--sans);
+}
+
+.gallery-lightbox {
+  background: var(--g-bg);
+  color: var(--g-text-main);
+}
+
+.gallery-lb-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--g-text-main);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.05em;
 }
 
 .h-curator-num {
@@ -549,7 +538,7 @@ body.theme-light-salon .hero-curator-ribbon {
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
 }
 
-body.theme-light-salon .gallery-filters {
+body .gallery-filters {
   box-shadow: 0 4px 18px rgba(28, 39, 32, 0.06);
 }
 
@@ -588,16 +577,16 @@ body.theme-light-salon .gallery-filters {
   box-shadow: 0 2px 14px rgba(212, 175, 55, 0.4);
 }
 
-body.theme-light-salon .g-filter-btn {
+body .g-filter-btn {
   color: #495544;
 }
 
-body.theme-light-salon .g-filter-btn:hover {
+body .g-filter-btn:hover {
   color: #1C2720;
   background: rgba(38, 54, 43, 0.08);
 }
 
-body.theme-light-salon .g-filter-btn.active {
+body .g-filter-btn.active {
   background: #1C2720 !important;
   color: #FAF8F5 !important;
   box-shadow: 0 3px 14px rgba(28, 39, 32, 0.22);
@@ -641,7 +630,7 @@ body.theme-light-salon .g-filter-btn.active {
   font-weight: 600;
 }
 
-body.theme-light-salon .g-toggle-btn.active {
+body .g-toggle-btn.active {
   background: #FFFFFF;
   color: #1C2720;
   box-shadow: 0 2px 8px rgba(28, 39, 32, 0.08);
@@ -686,13 +675,13 @@ body.theme-light-salon .g-toggle-btn.active {
   50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.7); }
 }
 
-body.theme-light-salon .g-tour-btn {
+body .g-tour-btn {
   border-color: rgba(38, 54, 43, 0.2);
   color: #1C2720;
 }
 
-body.theme-light-salon .g-tour-btn:hover,
-body.theme-light-salon .g-tour-btn.running {
+body .g-tour-btn:hover,
+body .g-tour-btn.running {
   background: #1C2720;
   color: #FAF8F5;
   border-color: #1C2720;
@@ -781,14 +770,14 @@ body.theme-light-salon .g-tour-btn.running {
 .stage-nav-arrow.prev { left: 18px; }
 .stage-nav-arrow.next { right: 18px; }
 
-body.theme-light-salon .stage-nav-arrow {
+body .stage-nav-arrow {
   background: #FFFFFF;
   color: #1C2720;
   border-color: rgba(38, 54, 43, 0.2);
   box-shadow: 0 10px 28px rgba(28, 39, 32, 0.12);
 }
 
-body.theme-light-salon .stage-nav-arrow:hover {
+body .stage-nav-arrow:hover {
   background: #1C2720;
   color: #FAF8F5;
   border-color: #1C2720;
@@ -879,13 +868,22 @@ body.theme-light-salon .stage-nav-arrow:hover {
 
 .stage-matting {
   position: relative;
-  background: #080C0A;
-  border-radius: 8px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  padding: 35px 25px; /* Film borders */
   overflow: hidden;
+  /* 35mm Film Sprocket Holes */
+  background-image: 
+    radial-gradient(circle at center, var(--g-bg) 4px, transparent 5px),
+    radial-gradient(circle at center, var(--g-bg) 4px, transparent 5px);
+  background-position: 0 10px, 0 calc(100% - 10px);
+  background-size: 25px 15px, 25px 15px;
+  background-repeat: repeat-x, repeat-x;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
-body.theme-light-salon .stage-matting {
-  background: #FFFFFF;
+body .stage-matting {
+  background-color: #1a1a1a;
 }
 
 .stage-img-box {
@@ -901,8 +899,8 @@ body.theme-light-salon .stage-matting {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
-  filter: brightness(0.96) contrast(1.06);
+  border-radius: 2px;
+  filter: brightness(0.92) contrast(1.1) sepia(0.2); /* Vintage warm film look */
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
@@ -949,7 +947,7 @@ body.theme-light-salon .stage-matting {
   font-size: 12px;
 }
 
-body.theme-light-salon .stage-loupe-badge {
+body .stage-loupe-badge {
   background: rgba(255, 255, 255, 0.9);
   border-color: rgba(38, 54, 43, 0.2);
   color: #1C2720;
@@ -1064,7 +1062,7 @@ body.theme-light-salon .stage-loupe-badge {
   text-transform: uppercase;
 }
 
-body.theme-light-salon .stage-roman {
+body .stage-roman {
   color: #1C2720;
 }
 
@@ -1076,7 +1074,7 @@ body.theme-light-salon .stage-roman {
   overflow: hidden;
 }
 
-body.theme-light-salon .stage-progress-track {
+body .stage-progress-track {
   background: rgba(38, 54, 43, 0.14);
 }
 
@@ -1089,7 +1087,7 @@ body.theme-light-salon .stage-progress-track {
   box-shadow: 0 0 10px var(--g-gold);
 }
 
-body.theme-light-salon .stage-progress-bar {
+body .stage-progress-bar {
   background: #1C2720;
   box-shadow: none;
 }
@@ -1116,11 +1114,11 @@ body.theme-light-salon .stage-progress-bar {
   box-shadow: 0 0 8px var(--g-gold);
 }
 
-body.theme-light-salon .stage-dot {
+body .stage-dot {
   background: rgba(38, 54, 43, 0.25);
 }
 
-body.theme-light-salon .stage-dot.active {
+body .stage-dot.active {
   background: #1C2720;
   box-shadow: none;
 }
@@ -1211,7 +1209,7 @@ body.theme-light-salon .stage-dot.active {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
-body.theme-light-salon .archive-stats-ribbon {
+body .archive-stats-ribbon {
   box-shadow: 0 8px 30px rgba(28, 39, 32, 0.06);
 }
 
@@ -1240,7 +1238,7 @@ body.theme-light-salon .archive-stats-ribbon {
   align-items: center;
 }
 
-body.theme-light-salon .stat-val {
+body .stat-val {
   color: #1C2720;
 }
 
@@ -1292,7 +1290,7 @@ body.theme-light-salon .stat-val {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-body.theme-light-salon .archive-search-box {
+body .archive-search-box {
   box-shadow: 0 4px 16px rgba(28, 39, 32, 0.06);
 }
 
@@ -1302,8 +1300,8 @@ body.theme-light-salon .archive-search-box {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
 }
 
-body.theme-light-salon .archive-search-box:hover,
-body.theme-light-salon .archive-search-box:focus-within {
+body .archive-search-box:hover,
+body .archive-search-box:focus-within {
   border-color: #1C2720;
   box-shadow: 0 0 20px rgba(28, 39, 32, 0.12);
 }
@@ -1313,7 +1311,7 @@ body.theme-light-salon .archive-search-box:focus-within {
   flex-shrink: 0;
 }
 
-body.theme-light-salon .archive-search-box .search-icon {
+body .archive-search-box .search-icon {
   color: #1C2720;
 }
 
@@ -1328,7 +1326,7 @@ body.theme-light-salon .archive-search-box .search-icon {
   outline: none;
 }
 
-body.theme-light-salon .archive-search-box input {
+body .archive-search-box input {
   color: #1C2720;
 }
 
@@ -1390,7 +1388,7 @@ body.theme-light-salon .archive-search-box input {
   font-weight: 600;
 }
 
-body.theme-light-salon .layout-toggle-btn.active {
+body .layout-toggle-btn.active {
   background: #FFFFFF;
   color: #1C2720;
   box-shadow: 0 2px 8px rgba(28, 39, 32, 0.08);
@@ -1478,7 +1476,7 @@ body.theme-light-salon .layout-toggle-btn.active {
               box-shadow 0.45s ease;
 }
 
-body.theme-light-salon .archive-card {
+body .archive-card {
   box-shadow: 0 16px 36px rgba(28, 39, 32, 0.08);
   border-color: rgba(38, 54, 43, 0.12);
 }
@@ -1489,7 +1487,7 @@ body.theme-light-salon .archive-card {
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
-body.theme-light-salon .archive-card:hover {
+body .archive-card:hover {
   border-color: #1C2720;
   box-shadow: 0 25px 60px rgba(28, 39, 32, 0.16);
 }
@@ -1510,15 +1508,16 @@ body.theme-light-salon .archive-card:hover {
 }
 
 .folio-plate-badge {
-  font-family: var(--serif);
+  font-family: var(--mono);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--g-gold);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--g-text-muted);
   text-transform: uppercase;
+  margin-bottom: 24px;
 }
 
-body.theme-light-salon .folio-plate-badge {
+body .folio-plate-badge {
   color: #1C2720;
 }
 
@@ -1542,7 +1541,7 @@ body.theme-light-salon .folio-plate-badge {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-body.theme-light-salon .folio-img-box {
+body .folio-img-box {
   background: #FFFFFF;
 }
 
@@ -1638,25 +1637,25 @@ body.theme-light-salon .folio-img-box {
   transform: scale(1.06);
 }
 
-body.theme-light-salon .folio-action-btn.primary {
+body .folio-action-btn.primary {
   background: #1C2720;
   color: #FAF8F5;
   box-shadow: 0 4px 16px rgba(28, 39, 32, 0.3);
 }
 
-body.theme-light-salon .folio-action-btn.primary:hover {
+body .folio-action-btn.primary:hover {
   background: #4E5943;
   color: #FFFFFF;
   box-shadow: 0 0 20px rgba(78, 89, 67, 0.4);
 }
 
-body.theme-light-salon .folio-action-btn.secondary {
+body .folio-action-btn.secondary {
   background: rgba(255, 255, 255, 0.95);
   color: #1C2720;
   border: 1px solid rgba(38, 54, 43, 0.25);
 }
 
-body.theme-light-salon .folio-action-btn.secondary:hover {
+body .folio-action-btn.secondary:hover {
   border-color: #1C2720;
   color: #1C2720;
   background: #FFFFFF;
@@ -1691,7 +1690,7 @@ body.theme-light-salon .folio-action-btn.secondary:hover {
   color: var(--g-gold);
 }
 
-body.theme-light-salon .archive-card:hover .folio-title {
+body .archive-card:hover .folio-title {
   color: var(--g-gold);
 }
 
@@ -1737,7 +1736,7 @@ body.theme-light-salon .archive-card:hover .folio-title {
   color: var(--g-gold);
 }
 
-body.theme-light-salon .folio-medium-badge {
+body .folio-medium-badge {
   color: #1C2720;
 }
 
@@ -1793,7 +1792,7 @@ body.theme-light-salon .folio-medium-badge {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(7, 12, 9, 0.96);
+  background: rgba(245, 242, 235, 0.96); /* Light warm ivory */
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   display: flex;
@@ -1815,9 +1814,9 @@ body.theme-light-salon .folio-medium-badge {
   position: absolute;
   top: 28px;
   right: 32px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(163, 159, 114, 0.3);
-  color: #ECE8E2;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1C2720;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -1901,10 +1900,15 @@ body.theme-light-salon .folio-medium-badge {
 }
 
 .gallery-lb-meta {
-  font-family: var(--sans);
-  font-size: 11.5px;
-  color: rgba(236, 232, 226, 0.55);
-  letter-spacing: 0.04em;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--g-text-sub);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .gallery-lb-meta strong {
