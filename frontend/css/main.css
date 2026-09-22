@@ -380,33 +380,37 @@ header.nav-dark .nav-links a.active {
 }
 
 .nav-links .nav-about-btn {
-  background: rgba(93, 99, 64, 0.12);
-  color: var(--c-moss) !important;
-  font-weight: 600;
-  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main) !important;
+  font-weight: 500;
+  padding: 6px 18px;
   border-radius: 9999px;
-  border: 1px solid rgba(93, 99, 64, 0.28);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s var(--ease-smooth);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .nav-links .nav-about-btn:hover,
 .nav-links .nav-about-btn.active {
-  background: var(--c-moss);
-  color: var(--c-ivory) !important;
-  border-color: var(--c-moss);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
 }
 
 header.nav-dark .nav-links .nav-about-btn {
-  background: rgba(163, 159, 114, 0.14);
-  color: var(--c-sage) !important;
-  border-color: rgba(163, 159, 114, 0.32);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--c-ivory) !important;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 header.nav-dark .nav-links .nav-about-btn:hover,
 header.nav-dark .nav-links .nav-about-btn.active {
-  background: var(--c-sage);
-  color: var(--c-fern) !important;
-  border-color: var(--c-sage);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 .nav-links .nav-about-btn::after {
@@ -947,14 +951,19 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .4s ease, background .4s ease, border-color .4s ease;
-  border: 1px solid transparent;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px; /* slightly more rounded like the reference */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .proj-card:hover {
   background: var(--card-hover);
-  border-color: var(--card-border);
-  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .proj-name {
