@@ -249,96 +249,27 @@
     });
   }
 
-  // --- Render 3D Continuous Carousel Stage ---
+  // --- Render 3D Sketchbook Engine ---
   function renderStage() {
     if (!stage) return;
 
-    let track = document.getElementById('stageTrack');
-
-    // If no track or filtered items changed significantly, rebuild the DOM
-    if (!track || track.childElementCount !== filteredArtworks.length) {
-      stage.innerHTML = '';
-      if (filteredArtworks.length === 0) {
-        stage.innerHTML = `
-          <div style="text-align:center; padding:60px 20px; color:var(--g-text-muted); font-family:'Cinzel',serif;">
-            <div style="font-size:32px; margin-bottom:12px; color:var(--g-gold);">✧</div>
-            <p style="letter-spacing:0.16em; text-transform:uppercase; font-size:14px;">No Plates in this curatorial series.</p>
-          </div>
-        `;
-        if (stageRoman) stageRoman.textContent = 'PLATE 00 OF 00';
-        if (stageProgressBar) stageProgressBar.style.width = '0%';
-        if (stageDots) stageDots.innerHTML = '';
-        if (stagePlacardWrap) stagePlacardWrap.innerHTML = '';
-        return;
-      }
-
-      track = document.createElement('div');
-      track.className = 'stage-carousel-track';
-      track.id = 'stageTrack';
-      
-      filteredArtworks.forEach((art, idx) => {
-        const item = document.createElement('div');
-        item.className = 'stage-card';
-        item.setAttribute('data-idx', idx);
-        
-        item.innerHTML = `
-          <div class="stage-frame">
-            <div class="stage-matting">
-              <div class="stage-img-box">
-                <img src="${art.url}" alt="${art.title}" loading="lazy">
-                <div class="stage-glass-glare"></div>
-                <div class="stage-loupe-badge" title="Click to view full exhibition print">
-                  <span class="loupe-icon">⚲</span>
-                  <span>Examine Plate</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-        track.appendChild(item);
-      });
-      stage.appendChild(track);
+    // Initialize or Update Sketchbook
+    if (!stage.querySelector('.sb-wrapper') && window.initSketchbook3D) {
+       window.initSketchbook3D(stage, filteredArtworks, currentIndex);
+       
+       // Hide old navigation and indicators
+       if (stageDragWrap) {
+          const prevBtn = document.getElementById('stage-prev');
+          const nextBtn = document.getElementById('stage-next');
+          if (prevBtn) prevBtn.style.display = 'none';
+          if (nextBtn) nextBtn.style.display = 'none';
+          const floorRef = stageDragWrap.querySelector('.stage-floor-reflection');
+          if (floorRef) floorRef.style.display = 'none';
+       }
+       const indicatorWrap = document.querySelector('.stage-indicator-wrap');
+       if (indicatorWrap) indicatorWrap.style.display = 'none';
+       if (stagePlacardWrap) stagePlacardWrap.style.display = 'none';
     }
-
-    // Now update existing DOM nodes to animate smoothly
-    const total = filteredArtworks.length;
-    const cards = track.querySelectorAll('.stage-card');
-
-    cards.forEach((item, idx) => {
-      let offset = idx - currentIndex;
-      if (offset < -Math.floor(total / 2)) offset += total;
-      if (offset > Math.floor(total / 2)) offset -= total;
-      
-      item.setAttribute('data-offset', offset);
-      item.classList.remove('center', 'side-prev', 'side-next', 'far-hidden');
-      
-      if (offset === 0) {
-        item.classList.add('center');
-      } else if (offset === -1) {
-        item.classList.add('side-prev');
-      } else if (offset === 1) {
-        item.classList.add('side-next');
-      } else {
-        item.classList.add('far-hidden');
-      }
-
-      const loupe = item.querySelector('.stage-loupe-badge');
-      if (loupe) {
-        loupe.style.display = (offset === 0) ? 'flex' : 'none';
-      }
-
-      item.onclick = () => {
-        if (offset === 0) {
-          openLightbox(filteredArtworks[idx]);
-        } else {
-          setGalleryIndex(idx);
-        }
-      };
-    });
-
-    updateMuseumPlacard();
-    updateStageProgress();
-    attachStageTilt();
   }
 
   // --- Museum Wall Placard (Authentic Curatorial Depth) ---
