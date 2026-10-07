@@ -254,7 +254,7 @@
     if (!stage) return;
 
     // Initialize or Update Sketchbook
-    if (!stage.querySelector('.sb-wrapper') && window.initSketchbook3D) {
+    if (window.initSketchbook3D) {
        window.initSketchbook3D(stage, filteredArtworks, currentIndex);
        
        // Hide old navigation and indicators
@@ -346,54 +346,8 @@
 
   // --- Physical Drag & Touch Swipe ---
   function setupDragPhysics() {
-    if (!stageDragWrap) return;
-
-    let isDown = false;
-    let startX = 0;
-    let deltaX = 0;
-    const threshold = 65; // px to advance plate
-
-    stageDragWrap.addEventListener('mousedown', (e) => {
-      // Ignore clicks on buttons
-      if (e.target.closest('button')) return;
-      isDown = true;
-      startX = e.clientX;
-      deltaX = 0;
-      stageDragWrap.style.cursor = 'grabbing';
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      deltaX = e.clientX - startX;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (!isDown) return;
-      isDown = false;
-      stageDragWrap.style.cursor = '';
-
-      if (deltaX < -threshold) {
-        rotateGallery(1); // next
-      } else if (deltaX > threshold) {
-        rotateGallery(-1); // prev
-      }
-    });
-
-    // Touch support for mobile
-    let touchStartX = 0;
-    stageDragWrap.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
-    stageDragWrap.addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const diff = touchEndX - touchStartX;
-      if (diff < -50) {
-        rotateGallery(1);
-      } else if (diff > 50) {
-        rotateGallery(-1);
-      }
-    }, { passive: true });
+    // Disabled: sketchbook3D.js implements its own highly realistic drag physics.
+    // Handling drag here conflicts with the 3D page curl engine.
   }
 
   // --- 3D Subtle Specular Tilt on Center Piece ---

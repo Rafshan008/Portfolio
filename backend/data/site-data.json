@@ -111,7 +111,7 @@
         "name": "AI Voice Agent",
         "category": "AUTOMATION",
         "description": "Built a voice-based AI customer support agent using Ollama, Python, and Asterisk for automated real-time dialogue.",
-        "thumbnail": "/uploads/project-ai-voice.svg",
+        "thumbnail": "/uploads/1791270644640-945960979.png",
         "client": "Internal / BRACNet",
         "services": "AI, Python, AGI",
         "year": "2025",
@@ -129,7 +129,7 @@
         "name": "IPPLAN",
         "category": "NETWORKING",
         "description": "Enhanced a network IP address management system with dynamic SVG diagrams and an  password vault.",
-        "thumbnail": "/uploads/project-ipplan.svg",
+        "thumbnail": "/uploads/1791270603396-448659426.jfif",
         "client": "BRACNet",
         "services": "PHP, MySQL, Security",
         "year": "2025",
@@ -262,12 +262,100 @@
         "location": "Rangamati"
       },
       {
-        "id": "ph-1787481641438",
-        "src": "/uploads/1787481646790-733694868.jpg",
-        "alt": "",
+        "id": "ph-8",
+        "src": "/uploads/photo-bw-hunter.jpg",
+        "alt": "BW Hunter",
+        "category": "portrait",
+        "aperture": "f/2.8 · 1/500",
+        "location": "Dhaka"
+      },
+      {
+        "id": "ph-9",
+        "src": "/uploads/photo-dsc01490.jpg",
+        "alt": "Landscape View",
+        "category": "landscape",
+        "aperture": "f/8 · 1/250",
+        "location": "Sylhet"
+      },
+      {
+        "id": "ph-10",
+        "src": "/uploads/photo-dsc01492.jpg",
+        "alt": "Landscape View",
+        "category": "landscape",
+        "aperture": "f/8 · 1/250",
+        "location": "Sylhet"
+      },
+      {
+        "id": "ph-11",
+        "src": "/uploads/photo-dsc01504.jpg",
+        "alt": "Street Walk",
         "category": "street",
-        "aperture": "",
-        "location": ""
+        "aperture": "f/4 · 1/125",
+        "location": "Old Dhaka"
+      },
+      {
+        "id": "ph-12",
+        "src": "/uploads/photo-dsc01510.jpg",
+        "alt": "Street Walk",
+        "category": "street",
+        "aperture": "f/4 · 1/125",
+        "location": "Old Dhaka"
+      },
+      {
+        "id": "ph-13",
+        "src": "/uploads/photo-dsc02290.jpg",
+        "alt": "Product Highlight",
+        "category": "product",
+        "aperture": "f/5.6 · 1/60",
+        "location": "Studio"
+      },
+      {
+        "id": "ph-14",
+        "src": "/uploads/photo-dsc02337.jpg",
+        "alt": "Product Focus",
+        "category": "product",
+        "aperture": "f/5.6 · 1/60",
+        "location": "Studio"
+      },
+      {
+        "id": "ph-15",
+        "src": "/uploads/photo-dsc02351.jpg",
+        "alt": "Product Details",
+        "category": "product",
+        "aperture": "f/5.6 · 1/60",
+        "location": "Studio"
+      },
+      {
+        "id": "ph-16",
+        "src": "/uploads/photo-dsc02600-2.jpg",
+        "alt": "Abstract Concept",
+        "category": "abstract",
+        "aperture": "f/2 · 1/1000",
+        "location": "Buriganga"
+      },
+      {
+        "id": "ph-17",
+        "src": "/uploads/photo-dscf6050.jpg",
+        "alt": "Urban Scenes",
+        "category": "street",
+        "aperture": "f/2.8 · 1/500",
+        "location": "Gulistan"
+      },
+      {
+        "id": "ph-18",
+        "src": "/uploads/photo-dscf8494.jpg",
+        "alt": "Nature Depth",
+        "category": "landscape",
+        "aperture": "f/11 · 1/125",
+        "location": "Rangamati"
+      },
+      {
+        "id": "ph-19",
+        "src": "/uploads/photo-dscf9660.jpg",
+        "alt": "Abstract Patterns",
+        "category": "abstract",
+        "aperture": "f/8 · 1/200",
+        "location": "River"
       }
     ]
   },

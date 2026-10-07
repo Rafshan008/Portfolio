@@ -2664,7 +2664,7 @@ footer .wrap {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
+  width: auto;
   height: 400px;
   /* Centering translation offset is applied in JS along with distance logic */
   border-radius: 16px;
@@ -2677,7 +2677,7 @@ footer .wrap {
 }
 
 .coverflow-card img {
-  width: 100%;
+  width: auto;
   height: 100%;
   object-fit: cover;
   display: block;
