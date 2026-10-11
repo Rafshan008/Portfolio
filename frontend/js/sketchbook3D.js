@@ -17,8 +17,8 @@
   const NOISE = "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")";
 
   const CSS = `
-.skb-wrapper{position:relative;width:100%;height:100%;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:radial-gradient(ellipse at 50% 35%,#f4f0e7 0%,#ebe5d8 75%,#e2dbcb 100%);border-radius:14px;user-select:none;-webkit-user-select:none}
+.skb-wrapper{position:relative;width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 35%,#f4f0e7 0%,#ebe5d8 75%,#e2dbcb 100%);border-radius:14px;user-select:none;-webkit-user-select:none;padding:14px 0}
 @keyframes skb-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .skb-stage{position:relative;z-index:2;width:100%;display:flex;justify-content:center;perspective:2600px;perspective-origin:50% 40%;animation:skb-in .7s cubic-bezier(.2,.7,.2,1) both}
 .skb-book{position:relative;flex:none;width:640px;height:400px;transform-style:preserve-3d;cursor:grab;touch-action:pan-y;will-change:transform}
@@ -70,43 +70,67 @@
 .fe-text-bot{position:absolute;bottom:12cqw;left:9cqw;right:9cqw;height:19cqw;display:flex;flex-direction:column;justify-content:flex-end}
 .pc-feature.L .fe-text-bot{padding-right:4cqw}
 .pc-feature.R .fe-text-bot{padding-left:4cqw}
-.fe-title{font-size:5.5cqw;margin-top:1.5cqw;line-height:1.1}
-.t-sub{font-size:2.8cqw;margin-top:1.5cqw;font-style:italic;color:#7b6c4e}
-.fe-body{flex:none;max-height:none;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;font-size:max(10px,2.6cqw);line-height:1.55;margin:0}
+.fe-title{font-size:max(11px,5.5cqw);margin-top:1.5cqw;line-height:1.1}
+.t-sub{font-size:max(9px,2.8cqw);margin-top:1.5cqw;font-style:italic;color:#7b6c4e}
+.fe-body{flex:none;max-height:none;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;font-size:max(9px,2.6cqw);line-height:1.5;margin:0}
 .fe-body.dc::first-letter{float:left;font:600 9cqw/.8 'Cormorant Garamond',serif;padding:0.5cqw 1cqw 0 0;color:#a8844a}
-.fe-meta{flex:none;margin-top:2cqw;font:400 1.8cqw 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
+.fe-meta{flex:none;margin-top:2cqw;font:400 max(8px,1.8cqw) 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
 
 /* (higher specificity so the generic .t-body rules below can't override these) */
-.fe-text-bot .fe-body{max-height:none;font-size:max(10px,2.7cqw);line-height:1.5}
+.fe-text-bot .fe-body{max-height:none;font-size:max(9px,2.7cqw);line-height:1.45}
 .fe-text-bot .fe-body.dc::first-letter{font-size:8.5cqw}
 
 /* General typography */
 .pc-fade{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to top,rgba(20,14,6,.6),transparent);pointer-events:none}
 .cap{position:absolute;bottom:6cqw;left:9cqw;right:9cqw;display:flex;justify-content:space-between;align-items:baseline;gap:3cqw;
-  font:400 1.8cqw 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
-.cap b{font:italic 600 3.2cqw 'Cormorant Garamond',serif;letter-spacing:0;text-transform:none;color:#2b261f}
+  font:400 max(8px,1.8cqw) 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
+.cap b{font:italic 600 max(9.5px,3.2cqw) 'Cormorant Garamond',serif;letter-spacing:0;text-transform:none;color:#2b261f}
 .pc-cover .cap,.pc-cover .cap b{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .pc-text{display:flex;flex-direction:column;padding:12cqw 10cqw 14cqw}
 .pc-text.L{padding-right:13cqw}.pc-text.R{padding-left:13cqw}
-.t-kick{font:500 1.8cqw 'IBM Plex Mono',monospace;letter-spacing:.25em;color:#a8844a;text-transform:uppercase}
-.t-title{font:600 7cqw/1.05 'Cormorant Garamond',Georgia,serif;margin:4cqw 0 0;letter-spacing:-.01em}
-.t-rule{width:8cqw;height:1px;background:#a8844a;margin:4cqw 0}
-.t-body{font-size:max(11px,3.2cqw);line-height:1.6;margin:0;text-align:justify;hyphens:auto;overflow:hidden;max-height:46%}
+.t-kick{font:500 max(8px,1.8cqw) 'IBM Plex Mono',monospace;letter-spacing:.25em;color:#a8844a;text-transform:uppercase}
+.t-title{font:600 max(13px,7cqw)/1.08 'Cormorant Garamond',Georgia,serif;margin:4cqw 0 0;letter-spacing:-.01em}
+.t-rule{width:8cqw;height:1px;background:#a8844a;margin:3.5cqw 0}
+.t-body{font-size:max(10px,3.2cqw);line-height:1.55;margin:0;text-align:justify;hyphens:auto;overflow:hidden;max-height:46%}
 .t-body.dc::first-letter{float:left;font:600 13cqw/.8 'Cormorant Garamond',serif;padding:1cqw 1.5cqw 0 0;color:#a8844a}
-.t-meta{margin-top:auto;font:400 1.8cqw/1.7 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
-.folio{position:absolute;bottom:5.5cqw;font:400 1.8cqw 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#a39577}
+.t-meta{margin-top:auto;font:400 max(8px,1.8cqw)/1.6 'IBM Plex Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:#7b6c4e}
+.folio{position:absolute;bottom:5.5cqw;font:400 max(8px,1.8cqw) 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#a39577}
 .pc.L .folio{left:9cqw}.pc.R .folio{right:9cqw}
 .pc-cover .folio,.pc-contain .folio{bottom:auto;top:6cqw}
 .pc-cover .folio{color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.4)}
 
-/* turning leaf (flat paper colour: no texture on the 28 moving faces keeps it fast) */
+/* Mobile container query adaptation (when single page width < 260px) */
+@container (max-width: 260px) {
+  .pc-text{padding:8cqw 7cqw 9cqw}
+  .pc-text.L{padding-right:9cqw}.pc-text.R{padding-left:9cqw}
+  .t-title{font-size:max(11.5px,6.8cqw);margin:2cqw 0 0}
+  .t-sub{font-size:max(8.5px,3.2cqw);margin-top:1cqw}
+  .t-rule{margin:2cqw 0;width:12cqw}
+  .t-body{font-size:max(8.5px,3cqw);line-height:1.45;-webkit-line-clamp:3;display:-webkit-box;-webkit-box-orient:vertical}
+  .t-kick{font-size:max(7.5px,2.2cqw);letter-spacing:.18em}
+  .t-meta{font-size:max(7.5px,2.2cqw);line-height:1.4}
+  .folio{font-size:max(7.5px,2.2cqw);bottom:3.5cqw}
+  .pc.L .folio{left:7cqw}.pc.R .folio{right:7cqw}
+  .cap{bottom:3.5cqw;left:7cqw;right:7cqw;gap:1.5cqw;font-size:max(7.5px,2.2cqw)}
+  .cap b{font-size:max(8.5px,3.5cqw)}
+  .mount,.spread-mount{padding:2.5cqw}
+  .mount img{max-width:82cqw;max-height:92cqw}
+  .spread-mount img{max-width:184cqw;max-height:78cqw}
+  .spread-mount-wrap{bottom:26cqw}
+  .fe-text-bot{bottom:6cqw;height:18cqw;left:7cqw;right:7cqw}
+  .fe-title{font-size:max(10.5px,5.8cqw)}
+  .fe-body{font-size:max(8px,2.8cqw);-webkit-line-clamp:2;line-height:1.35}
+  .fe-meta{font-size:max(7px,2.2cqw);margin-top:1cqw}
+}
+
+/* turning leaf */
 .skb-leaf{position:absolute;top:0;bottom:0;left:50%;width:50%;transform-style:preserve-3d;z-index:10;pointer-events:none}
 .skb-strip{position:absolute;top:0;height:100%;transform-origin:left center;transform-style:preserve-3d;will-change:transform}
 .skb-face{position:absolute;top:0;left:0;height:100%;width:calc(100% + .7px);overflow:hidden;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fcfaf5}
 .skb-back{transform:rotateY(180deg)}
 
-/* Turning leaf performance optimizations (disables heavy shadows on the 28 moving DOM clones) */
+/* Turning leaf performance optimizations */
 .skb-leaf .mount, .skb-leaf .spread-mount { box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important; background-image: none !important; }
 .skb-leaf .mount::before, .skb-leaf .spread-mount::before { display: none !important; }
 .skb-leaf img { box-shadow: none !important; }
@@ -119,7 +143,12 @@
 .skb-next{right:1.5%}.skb-next::before{transform:translate(-70%,-50%) rotate(-135deg)}
 .skb-arrow:hover{opacity:1}
 .skb-prev:hover{transform:translateY(-50%) translateX(-3px)}.skb-next:hover{transform:translateY(-50%) translateX(3px)}
-@media (max-width:640px){.skb-arrow{width:34px}}
+@media (max-width:768px){
+  .skb-wrapper{min-height:220px;padding:12px 0;border-radius:12px}
+  .skb-arrow{width:32px;height:48px;opacity:.75}
+  .skb-prev{left:2px}.skb-next{right:2px}
+  .skb-arrow::before{width:12px;height:12px}
+}
 @media (prefers-reduced-motion:reduce){.skb-stage{animation:none}}
 `;
 
@@ -260,10 +289,15 @@
     const book = document.getElementById('skb-book');
     const wrap = book && book.closest('.skb-wrapper');
     if (!wrap) return;
-    const w = wrap.clientWidth || 800, h = wrap.clientHeight || 520;
-    const bw = Math.max(300, Math.min(w * (w < 640 ? 0.92 : 0.8), (h - 90) * BOOK_AR, 1100));
+    const w = wrap.clientWidth || window.innerWidth || 800;
+    const h = wrap.clientHeight || 500;
+    const isMobile = w < 768;
+    // On mobile devices, fit generously up to 96% of wrapper width
+    const bw = isMobile
+      ? Math.max(280, Math.min(w * 0.95, 480))
+      : Math.max(300, Math.min(w * 0.82, (h > 150 ? (h - 70) : 480) * BOOK_AR, 1100));
     book.style.width = bw + 'px';
-    book.style.height = bw / BOOK_AR + 'px';
+    book.style.height = (bw / BOOK_AR) + 'px';
   }
 
   function updateStaticPages() {
@@ -416,15 +450,30 @@
     let drag = null;
     book.addEventListener('pointerdown', (e) => {
       if ((e.pointerType === 'mouse' && e.button !== 0) || isAnimating || currentArtworks.length <= 1) return;
-      drag = { id: e.pointerId, x0: e.clientX, lx: e.clientX, lt: performance.now(), vx: 0, st: null };
-      book.setPointerCapture(e.pointerId);
+      drag = { id: e.pointerId, type: e.pointerType, x0: e.clientX, y0: e.clientY, lx: e.clientX, lt: performance.now(), vx: 0, st: null, isScrolling: false };
+      if (e.pointerType !== 'touch') {
+        try { book.setPointerCapture(e.pointerId); } catch (_) {}
+      }
     });
 
     book.addEventListener('pointermove', (e) => {
       if (!drag || e.pointerId !== drag.id) return;
+      if (drag.isScrolling) return;
+
       const dx = e.clientX - drag.x0;
+      const dy = e.clientY - drag.y0;
+
       if (!drag.st) {
-        if (Math.abs(dx) < 6) return;
+        // If vertical swipe is dominant on touch, allow native page scroll
+        if (drag.type === 'touch' && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10) {
+          drag.isScrolling = true;
+          return;
+        }
+        if (Math.abs(dx) < 8) return;
+
+        if (drag.type === 'touch') {
+          try { book.setPointerCapture(e.pointerId); } catch (_) {}
+        }
         const dir = dx < 0 ? 1 : -1;
         drag.st = makeTurn(dir, wrapIdx(currentIndex + dir));
       }
@@ -437,6 +486,7 @@
     const release = (e) => {
       if (!drag || e.pointerId !== drag.id) return;
       const d = drag; drag = null;
+      if (d.isScrolling) return;
       if (!d.st) {                                   // a click: right half = next, left half = previous
         if (e.type === 'pointerup') {
           const r = book.getBoundingClientRect();

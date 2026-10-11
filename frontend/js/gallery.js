@@ -257,7 +257,7 @@
     if (window.initSketchbook3D) {
        window.initSketchbook3D(stage, filteredArtworks, currentIndex);
        
-       // Hide old navigation and indicators
+       // Hide redundant static pedals if 3D book has its own arrows
        if (stageDragWrap) {
           const prevBtn = document.getElementById('stage-prev');
           const nextBtn = document.getElementById('stage-next');
@@ -266,13 +266,16 @@
           const floorRef = stageDragWrap.querySelector('.stage-floor-reflection');
           if (floorRef) floorRef.style.display = 'none';
        }
+       // Keep curatorial placard and progress indicators active for rich mobile storytelling
        const indicatorWrap = document.querySelector('.stage-indicator-wrap');
-       if (indicatorWrap) indicatorWrap.style.display = 'none';
-       if (stagePlacardWrap) stagePlacardWrap.style.display = 'none';
+       if (indicatorWrap) indicatorWrap.style.display = '';
+       if (stagePlacardWrap) stagePlacardWrap.style.display = '';
+       updateMuseumPlacard();
+       updateStageProgress();
     }
   }
 
-  // --- Museum Wall Placard (Authentic Curatorial Depth) ---
+  // --- Museum Wall Placard (Authentic Curatorial Depth & Mobile Controls) ---
   function updateMuseumPlacard() {
     if (!stagePlacardWrap) return;
     const current = filteredArtworks[currentIndex];
@@ -281,21 +284,35 @@
       return;
     }
 
+    stagePlacardWrap.style.display = '';
+
     stagePlacardWrap.innerHTML = `
       <div class="museum-placard">
         <div class="placard-top">
-          <span class="placard-plate">${current.plate}</span>
+          <span class="placard-plate">${current.plate || `PLATE ${currentIndex + 1}`}</span>
           <span class="placard-bullet">✦</span>
-          <span class="placard-series">${current.series}</span>
+          <span class="placard-series">${current.series || current.category}</span>
         </div>
         <h3 class="placard-title">${current.title}</h3>
-        <p class="placard-narrative">"${current.narrative}"</p>
+        <p class="placard-narrative">"${current.narrative || current.description || ''}"</p>
         <div class="placard-specs">
-          <span class="placard-spec-item"><strong>Medium:</strong> ${current.medium}</span>
+          <span class="placard-spec-item"><strong>Medium:</strong> ${current.medium || 'Archival Pigment'}</span>
           <span class="placard-spec-sep">·</span>
-          <span class="placard-spec-item"><strong>Location:</strong> ${current.location}</span>
+          <span class="placard-spec-item"><strong>Location:</strong> ${current.location || 'Dhaka'}</span>
           <span class="placard-spec-sep">·</span>
-          <span class="placard-spec-item"><strong>Capture:</strong> ${current.optics}</span>
+          <span class="placard-spec-item"><strong>Capture:</strong> ${current.optics || '35mm Prime'}</span>
+        </div>
+        <div class="mobile-stage-actions">
+          <button class="mobile-stage-btn" onclick="window.openActiveLightbox()" title="Examine high-resolution master print in full detail">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            <span>Examine Master Print</span>
+          </button>
+          <button class="mobile-stage-btn secondary" onclick="window.sbTurn(-1)" aria-label="Previous plate" title="Previous Plate (Left Arrow)">
+            <span>&larr; Prev</span>
+          </button>
+          <button class="mobile-stage-btn secondary" onclick="window.sbTurn(1)" aria-label="Next plate" title="Next Plate (Right Arrow)">
+            <span>Next &rarr;</span>
+          </button>
         </div>
       </div>
     `;
@@ -303,7 +320,7 @@
     // Trigger smooth fade entrance
     const placard = stagePlacardWrap.querySelector('.museum-placard');
     if (placard && window.gsap) {
-      gsap.fromTo(placard, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
+      gsap.fromTo(placard, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
     }
   }
 
@@ -333,14 +350,26 @@
   // --- Smooth Stage Navigation ---
   window.rotateGallery = function (direction) {
     if (filteredArtworks.length <= 1) return;
-    currentIndex = (currentIndex + direction + filteredArtworks.length) % filteredArtworks.length;
-    renderStage();
+    if (window.sbTurn) {
+      window.sbTurn(direction);
+    } else {
+      currentIndex = (currentIndex + direction + filteredArtworks.length) % filteredArtworks.length;
+      renderStage();
+    }
   };
 
-  window.setGalleryIndex = function (idx) {
-    if (idx >= 0 && idx < filteredArtworks.length && idx !== currentIndex) {
+  window.setGalleryIndex = function (idx, from3D) {
+    if (idx >= 0 && idx < filteredArtworks.length) {
       currentIndex = idx;
-      renderStage();
+      if (!from3D) {
+        if (window.sbGoTo) {
+          window.sbGoTo(idx);
+        } else {
+          renderStage();
+        }
+      }
+      updateMuseumPlacard();
+      updateStageProgress();
     }
   };
 
@@ -570,6 +599,13 @@
     updateLightboxView();
   };
 
+  window.openLightbox = openLightbox;
+  window.openActiveLightbox = function () {
+    if (filteredArtworks[currentIndex]) {
+      openLightbox(filteredArtworks[currentIndex]);
+    }
+  };
+
   // --- Event Bindings ---
   function setupEvents() {
     // Prev / Next Stage Navigation
@@ -673,6 +709,11 @@
     }
     if (drawerClose && drawer) {
       drawerClose.addEventListener('click', () => drawer.classList.remove('open'));
+    }
+    if (drawer) {
+      drawer.querySelectorAll('.drawer-link').forEach(link => {
+        link.addEventListener('click', () => drawer.classList.remove('open'));
+      });
     }
   }
 

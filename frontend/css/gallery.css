@@ -266,16 +266,32 @@ body .nav-links .nav-about-btn:hover {
 
 .nav-burger {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
   background: transparent;
   border: none;
-  color: var(--g-text-main);
-  font-size: 20px;
   cursor: pointer;
+  padding: 4px;
+}
+
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--g-text-main);
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 @media (max-width: 960px) {
-  .nav-links, .nav-right { display: none; }
-  .nav-burger { display: block; }
+  .nav-links { display: none !important; }
+  .nav-status { display: none !important; }
+  .nav-right { display: flex !important; align-items: center; }
+  .nav-burger { display: flex !important; }
   .nav-container { padding: 8px 18px; }
 }
 
@@ -1949,3 +1965,554 @@ body .folio-medium-badge {
 .gallery-lb-nav.next { right: 24px; }
 
 /* ==========================================================================
+   MOBILE STAGE ACTIONS & CURATORIAL DOCK (Universal Styling)
+   ========================================================================== */
+
+.mobile-stage-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.mobile-stage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1C2720;
+  color: #FAF8F5;
+  border: 1px solid #1C2720;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(28, 39, 32, 0.2);
+  transition: all 0.22s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mobile-stage-btn:hover {
+  background: var(--g-gold);
+  border-color: var(--g-gold);
+  color: #101712;
+  transform: translateY(-1px);
+}
+
+.mobile-stage-btn:active {
+  transform: scale(0.96);
+}
+
+.mobile-stage-btn.secondary {
+  background: rgba(38, 54, 43, 0.08);
+  color: #1C2720;
+  box-shadow: none;
+  border: 1px solid var(--g-border);
+}
+
+.mobile-stage-btn.secondary:hover {
+  background: #1C2720;
+  color: #FAF8F5;
+  border-color: #1C2720;
+}
+
+/* ==========================================================================
+   TABLET & MOBILE RESPONSIVE MEDIA QUERIES (max-width: 960px)
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  #siteHeader {
+    top: 10px;
+    padding: 0 14px;
+  }
+
+  .nav-container {
+    max-width: calc(100vw - 28px);
+    padding: 8px 16px;
+  }
+
+  .gallery-hero {
+    padding-top: 115px;
+    padding-bottom: 24px;
+  }
+
+  .archive-section {
+    padding: 30px 20px 80px 20px;
+  }
+
+  .archive-grid.layout-editorial {
+    gap: 24px 20px;
+  }
+
+  .archive-grid.layout-editorial .archive-card.span-hero {
+    grid-column: span 12;
+  }
+
+  .archive-grid.layout-editorial .archive-card.span-side {
+    grid-column: span 6;
+  }
+
+  .archive-grid.layout-editorial .archive-card.span-third {
+    grid-column: span 6;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PHONES RESPONSIVE MEDIA QUERIES (max-width: 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Site Layout & Hero */
+  .gallery-page {
+    overflow-x: hidden;
+  }
+
+  .gallery-hero {
+    padding-top: 96px;
+    padding-bottom: 18px;
+  }
+
+  .gallery-hero-inner {
+    padding: 0 14px;
+  }
+
+  .gallery-hero-badge {
+    font-size: 8.5px;
+    letter-spacing: 0.16em;
+    padding: 5px 14px;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .exhibition-title {
+    margin-bottom: 12px;
+  }
+
+  .exhibition-title .title-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+  }
+
+  .exhibition-title .title-main {
+    font-size: clamp(26px, 8vw, 38px);
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
+  }
+
+  .exhibition-title .title-italic {
+    font-size: clamp(18px, 5.2vw, 24px);
+    margin-top: 4px;
+  }
+
+  .exhibition-sub {
+    font-size: 12.5px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  /* Curator's Provenance Ribbon (Mobile 2x2 Grid) */
+  .hero-curator-ribbon {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    border-radius: 16px;
+    padding: 12px 16px;
+    max-width: 320px;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 4px 18px rgba(28, 39, 32, 0.08);
+  }
+
+  .h-curator-item {
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .h-curator-sep {
+    display: none !important;
+  }
+
+  .h-curator-num {
+    font-size: 11px;
+  }
+
+  .h-curator-desc {
+    font-size: 9px;
+  }
+
+  /* Category Filters Bar (Horizontal Scroll Ribbon) */
+  .gallery-controls-bar {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .gallery-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 6px 10px;
+    border-radius: 999px;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .gallery-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .g-filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 10px;
+    padding: 6px 13px;
+    letter-spacing: 0.08em;
+  }
+
+  .gallery-extra-controls {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .g-view-toggle {
+    border-radius: 999px;
+    padding: 4px 6px;
+  }
+
+  .g-toggle-btn {
+    font-size: 10px;
+    padding: 5px 11px;
+  }
+
+  .g-tour-btn {
+    font-size: 10px;
+    padding: 5px 14px;
+  }
+
+  /* 3D Exhibition Stage Pavilion */
+  .exhibition-section {
+    padding: 0 8px 30px 8px;
+    max-width: 100%;
+  }
+
+  .stage-spotlight-beam {
+    width: 100%;
+    height: 300px;
+    top: -50px;
+    opacity: 0.5;
+  }
+
+  .exhibition-stage-wrap {
+    min-height: auto;
+    padding: 0;
+    perspective: 1400px;
+  }
+
+  .exhibition-stage {
+    min-height: auto;
+    width: 100%;
+  }
+
+  /* Museum Wall Placard on Mobile */
+  .stage-placard-wrap {
+    margin: 18px auto 0 auto;
+    padding: 0 6px;
+    max-width: 100%;
+    display: block !important;
+  }
+
+  .museum-placard {
+    background: var(--g-bg-card);
+    border: 1px solid var(--g-border);
+    border-radius: 16px;
+    padding: 16px 14px;
+    box-shadow: 0 4px 18px rgba(28, 39, 32, 0.05);
+  }
+
+  .placard-top {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+
+  .placard-title {
+    font-size: clamp(19px, 5.8vw, 24px);
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  .placard-narrative {
+    font-size: 12.5px;
+    line-height: 1.55;
+    margin: 4px 0 10px 0;
+    padding: 0 4px;
+  }
+
+  .placard-specs {
+    font-size: 9.5px;
+    gap: 6px;
+  }
+
+  .placard-spec-sep {
+    margin: 0 2px;
+  }
+
+  /* Progress Timeline & Dots */
+  .stage-indicator-wrap {
+    margin-top: 16px;
+    display: flex !important;
+    gap: 10px;
+  }
+
+  .stage-roman-row {
+    font-size: 10.5px;
+    gap: 10px;
+  }
+
+  .stage-drag-hint {
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .stage-progress-track {
+    max-width: 260px;
+  }
+
+  /* Folio Catalogue Archive Section */
+  .archive-section {
+    margin-top: 24px;
+    padding: 24px 12px 60px 12px;
+  }
+
+  .archive-header {
+    margin-bottom: 24px;
+  }
+
+  .archive-eyebrow {
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+  }
+
+  .archive-title {
+    font-size: clamp(22px, 6.5vw, 30px);
+    letter-spacing: 0.06em;
+  }
+
+  .archive-subtitle {
+    font-size: 12.5px;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  /* Archive Stats Ribbon (Mobile 2x2 Grid) */
+  .archive-stats-ribbon {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+    border-radius: 16px;
+    padding: 12px 16px;
+    max-width: 320px;
+    margin: 0 auto 24px auto;
+  }
+
+  .stat-pill {
+    justify-content: center;
+  }
+
+  .stat-divider {
+    display: none !important;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .stat-val {
+    font-size: 10px;
+  }
+
+  /* Archive Toolbar */
+  .archive-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .archive-search-box {
+    min-width: 0 !important;
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  .archive-search-box input {
+    font-size: 11.5px;
+  }
+
+  .archive-layout-toggles {
+    justify-content: center;
+    width: 100%;
+    padding: 4px 8px;
+  }
+
+  .layout-label {
+    font-size: 9px;
+  }
+
+  .layout-toggle-btn {
+    font-size: 10px;
+    padding: 5px 11px;
+  }
+
+  /* Mobile Archive Grid: Full Width Master Cards */
+  .archive-grid.layout-editorial,
+  .archive-grid.layout-grid,
+  .archive-grid.layout-panoramic {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .archive-card {
+    grid-column: span 12 !important;
+    width: 100% !important;
+  }
+
+  .folio-frame {
+    padding: 14px 14px 16px 14px;
+  }
+
+  .folio-top-stamp {
+    margin-bottom: 10px;
+  }
+
+  .folio-plate-badge {
+    font-size: 10px;
+  }
+
+  .folio-seal {
+    font-size: 8.5px;
+  }
+
+  .folio-caption {
+    margin-top: 14px;
+  }
+
+  .folio-title {
+    font-size: 17px;
+  }
+
+  .folio-series-text {
+    font-size: 12px;
+  }
+
+  .folio-specs-row {
+    font-size: 10px;
+  }
+
+  /* Glass Exhibition Lightbox Modal on Mobile */
+  .gallery-lightbox {
+    padding: 16px 10px;
+  }
+
+  .gallery-lb-close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .gallery-lb-frame {
+    max-height: 52vh;
+    border-radius: 6px;
+  }
+
+  .gallery-lb-frame img {
+    max-height: 50vh;
+    border-radius: 6px;
+  }
+
+  .gallery-lb-details {
+    margin-top: 14px;
+    padding: 0 6px;
+    max-width: 100%;
+  }
+
+  .gallery-lb-plate-tag {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .gallery-lb-title {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+
+  .gallery-lb-narrative {
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .gallery-lb-meta {
+    font-size: 9.5px;
+    gap: 6px;
+  }
+
+  .gallery-lb-nav {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .gallery-lb-nav.prev { left: 8px; }
+  .gallery-lb-nav.next { right: 8px; }
+
+  /* Footer on Mobile */
+  footer.bg-forest .wrap {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+    padding: 24px 16px !important;
+  }
+}
+
+/* Very Small Mobile Screens (max-width: 400px) */
+@media (max-width: 400px) {
+  .hero-curator-ribbon,
+  .archive-stats-ribbon {
+    grid-template-columns: 1fr;
+    max-width: 240px;
+    gap: 8px;
+  }
+
+  .exhibition-title .title-main {
+    font-size: 24px;
+  }
+
+  .mobile-stage-btn {
+    font-size: 10px;
+    padding: 7px 14px;
+  }
+}
